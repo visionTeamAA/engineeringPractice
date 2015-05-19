@@ -18,7 +18,7 @@ public class BasicUtilities {
 		//getByIndex(0);
 		//checkCollection();
 		//retainAll();
-		//disjunction();
+		disjunction();
 		//cardinality();
 		///containAny();
 		//intersection();
