@@ -1,7 +1,7 @@
 package javautil.collections.bean;
 
 public class Person {
-	private String name;
+	private String name; 
 	private int age;
 	private String salutation;
 	private String gender;
