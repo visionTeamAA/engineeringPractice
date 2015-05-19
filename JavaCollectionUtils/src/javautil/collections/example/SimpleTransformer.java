@@ -15,6 +15,7 @@ public class SimpleTransformer {
 	{
 	  //basicTransformer();
 	  chainedTranformer();
+	  //huong test commit
 	}
 	
 	@SuppressWarnings("unchecked")
