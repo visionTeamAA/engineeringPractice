@@ -23,7 +23,7 @@ public class BasicUtilities {
 		///containAny();
 		//intersection();
 		//substract();123
-		//union();
+		union();
 	}
 
 	private static void checkCollection() {
