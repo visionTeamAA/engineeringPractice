@@ -22,7 +22,7 @@ public class BasicUtilities {
 		//cardinality();
 		///containAny();
 		//intersection();
-		//substract();
+		//substract();123
 		//union();
 	}
 
