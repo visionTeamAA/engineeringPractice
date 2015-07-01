@@ -2,7 +2,7 @@
 [>Created: Wed Jul 01 09:58:18 ICT 2015]
 14E478C4B47FFD8A 3.17 #module
 >Proto >Proto Collection #zClass
-se0 startSample Big #zClass
+se0 Sample Big #zClass
 se0 B #cInfo
 se0 #process
 se0 @TextInP .resExport .resExport #zField
@@ -18,11 +18,11 @@ se0 @EndTask f1 '' #zField
 se0 @RichDialog f3 '' #zField
 se0 @PushWFArc f4 '' #zField
 se0 @PushWFArc f2 '' #zField
->Proto se0 se0 startSample #zField
+>Proto se0 se0 Sample #zField
 se0 f0 outLink startXRFL.ivp #txt
-se0 f0 type testingProject.Data #txt
+se0 f0 type ch.ivy.sample.Data #txt
 se0 f0 inParamDecl '<> param;' #txt
-se0 f0 actionDecl 'testingProject.Data out;
+se0 f0 actionDecl 'ch.ivy.sample.Data out;
 ' #txt
 se0 f0 guid 14E478C4B4BADA01 #txt
 se0 f0 requestEnabled true #txt
@@ -88,16 +88,16 @@ se0 f0 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 se0 f0 @C|.responsibility Everybody #txt
 se0 f0 81 49 30 30 -36 17 #rect
 se0 f0 @|StartRequestIcon #fIcon
-se0 f1 type testingProject.Data #txt
+se0 f1 type ch.ivy.sample.Data #txt
 se0 f1 337 49 30 30 0 15 #rect
 se0 f1 @|EndIcon #fIcon
 se0 f3 targetWindow NEW:card: #txt
 se0 f3 targetDisplay TOP #txt
-se0 f3 richDialogId testingProject.ReferenceLetterRequest #txt
+se0 f3 richDialogId ch.ivy.sample.ReferenceLetterRequest #txt
 se0 f3 startMethod start() #txt
-se0 f3 type testingProject.Data #txt
+se0 f3 type ch.ivy.sample.Data #txt
 se0 f3 requestActionDecl '<> param;' #txt
-se0 f3 responseActionDecl 'testingProject.Data out;
+se0 f3 responseActionDecl 'ch.ivy.sample.Data out;
 ' #txt
 se0 f3 responseMappingAction 'out=in;
 ' #txt
@@ -111,7 +111,7 @@ se0 f4 expr out #txt
 se0 f4 111 64 168 64 #arcP
 se0 f2 expr out #txt
 se0 f2 280 64 337 64 #arcP
->Proto se0 .type testingProject.Data #txt
+>Proto se0 .type ch.ivy.sample.Data #txt
 >Proto se0 .processKind NORMAL #txt
 >Proto se0 0 0 32 24 18 0 #rect
 >Proto se0 @|BIcon #fIcon
