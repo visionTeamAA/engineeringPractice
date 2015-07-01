@@ -1,4 +1,4 @@
-package testingProject;
+package ch.ivy.sample;
 
 /**
  */
