@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Wed Jul 01 13:37:45 ICT 2015]
+[>Created: Wed Jul 01 15:48:53 ICT 2015]
 14E47CF40CA27A1E 3.17 #module
 >Proto >Proto Collection #zClass
 Rs0 ReferenceLetterRequestProcess Big #zClass
@@ -73,7 +73,9 @@ Rs0 f6 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestDa
 Rs0 f6 actionTable 'out=in;
 ' #txt
 Rs0 f6 actionCode 'in.activeTabIndex = 0;
-in.activeTabIndexTemporary = 0;' #txt
+in.activeTabIndexTemporary = 0;
+
+ivy.log.info("Huong test commit SVN");' #txt
 Rs0 f6 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
