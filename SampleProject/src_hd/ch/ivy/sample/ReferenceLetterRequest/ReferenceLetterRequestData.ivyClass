@@ -1,2 +1,6 @@
 ReferenceLetterRequestData #class
 ch.ivy.sample.ReferenceLetterRequest #namespace
+activeTabIndex java.lang.Integer #field
+activeTabIndex PERSISTENT #fieldModifier
+activeTabIndexTemporary java.lang.Integer #field
+activeTabIndexTemporary PERSISTENT #fieldModifier

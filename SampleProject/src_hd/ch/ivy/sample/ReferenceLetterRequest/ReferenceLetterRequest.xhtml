@@ -8,26 +8,55 @@
 	xmlns:pm="http://primefaces.org/mobile">
 <h:body>
 	<ui:composition template="/layouts/basic.xhtml">
+		
 		<ui:define name="title">ReferenceLetterRequest</ui:define>
 		<ui:define name="content">
+			<link rel="stylesheet"
+				href="#{resource['ivy-webcontent:css/common.css']}" />
+			<script
+				src="#{resource['ivy-webcontent:js/common.js']}" />
 			<h3>
-			This is a <a href="http://developer.axonivy.com/doc/5.1.latest/DesignerGuideHtml/ivy.userinterface.html#ivy-htmldialogs">Html Dialog</a> 
-			implemented with JSF and <a href="http://primefaces.org/">Primefaces</a> as widget library
+				Reference letter request sample
 			</h3>
-			
-			<h:form id="form">
-				<h:panelGrid columns="2">
-					<f:facet name="header">
-						<p:messages></p:messages>
-					</f:facet>
-					
-					
-					
-					<br />
-					<p:commandButton actionListener="#{logic.close}" value="Proceed" update="form" icon="ui-icon-check" />
-				</h:panelGrid>
+			<p:outputPanel id="xrflParent" layout="block"
+				styleClass="xrfl-parent">
+			<h:form id="xrflMainPageForm">
+				<p:outputPanel id="xrflMainTabPanel"
+						styleClass="xrfl-main-page-panel">
+						<p:tabView id="xrflMainTabView" widgetVar="xrflMainTabViewVar"
+							activeIndex="#{data.activeTabIndexTemporary}"
+							styleClass="xrfl-main-tabView">
+							<p:ajax global="true" event="tabChange"
+								listener="#{logic.onTabChange}" partialSubmit="true"
+								process="@form"
+								update=":#{p:component('xrflEmployeeDetailTab')}, 
+								:#{p:component('xrflDocumentTypeTab')}"
+								oncomplete="onCompleteValidation(xhr, status, args);">
+							</p:ajax>
+							<p:tab id="xrflEmployeeDetailTab"
+								title="Employee"
+								titleStyleClass="xrfl-ui-steps">
+								<p:outputPanel id="xrflRequestEmpDetail" layout="inline">
+									<p:outputPanel rendered="#{data.activeTabIndex == 0}">
+										<!-- <ui:include src="EmployeeDetail.xhtml"></ui:include> -->
+										Employee
+									</p:outputPanel>
+								</p:outputPanel>
+							</p:tab>
+							<p:tab id="xrflDocumentTypeTab"
+								title="Document type"
+								titleStyleClass="xrfl-ui-steps">
+								<p:outputPanel id="xrflRequestDocumentType" layout="inline">
+									<p:outputPanel rendered="#{data.activeTabIndex == 1}">
+										<!-- <ui:include src="DocumentType.xhtml"></ui:include> -->
+										Document type
+									</p:outputPanel>
+								</p:outputPanel>
+							</p:tab>
+						</p:tabView>
+					</p:outputPanel>
 			</h:form>
-			
+			</p:outputPanel>
 		</ui:define>
 	</ui:composition>
 </h:body>
