@@ -25,5 +25,5 @@ public class BusinessException extends Exception {
 
 	public void setStackTrace(StackTraceElement[] stackTrace) {
 		this.stackTrace = stackTrace.clone();
-	}
+	} 
 }
