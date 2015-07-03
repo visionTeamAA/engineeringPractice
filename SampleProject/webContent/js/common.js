@@ -738,13 +738,13 @@ function xrflMakeEffectOnLoad(){
 }
 
 function xrflHandleRefreshAction(e){
-	if ((e.which || e.keyCode) == 116 ||  (e.keyCode == 82 && e.ctrlKey)){
+	/*if ((e.which || e.keyCode) == 116 ||  (e.keyCode == 82 && e.ctrlKey)){
 		var mainTabPanel = $("[id$='xrflMainTabPanel']");
 		if(xrflCheckObjectExists(mainTabPanel)){
 			reloadCurrentStep();
 			e.preventDefault();
 		}
-	}
+	}*/
 }
 
 function xrflGetStepId(code){

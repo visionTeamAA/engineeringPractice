@@ -18,7 +18,7 @@
 			<h3>
 				Reference letter request sample
 			</h3>
-			<p:outputPanel id="xrflParent" layout="block"
+			<p:outputPanel id="xrflParent" layout="block" style="margin-top:40px"
 				styleClass="xrfl-parent">
 			<h:form id="xrflMainPageForm">
 				<p:outputPanel id="xrflMainTabPanel"
@@ -29,17 +29,34 @@
 							<p:ajax global="true" event="tabChange"
 								listener="#{logic.onTabChange}" partialSubmit="true"
 								process="@form"
-								update=":#{p:component('xrflEmployeeDetailTab')}, 
-								:#{p:component('xrflDocumentTypeTab')}"
-								oncomplete="onCompleteValidation(xhr, status, args);">
+								update="@form"
+								oncomplete="buildMainNavigator(); onCompleteValidation(xhr, status, args);">
 							</p:ajax>
 							<p:tab id="xrflEmployeeDetailTab"
 								title="Employee"
 								titleStyleClass="xrfl-ui-steps">
 								<p:outputPanel id="xrflRequestEmpDetail" layout="inline">
 									<p:outputPanel rendered="#{data.activeTabIndex == 0}">
-										<!-- <ui:include src="EmployeeDetail.xhtml"></ui:include> -->
-										Employee
+										<p:panelGrid columns="2" styleClass="panelGroup">
+											<p:row>
+												<p:column>
+													<p:outputLabel value="Firstname:" style="margin-right:20px"></p:outputLabel>
+												</p:column>
+												<p:column>
+													<p:inputText id="firstname" value="#{xrflRequestBean.employeeDetailStep.firstName}"></p:inputText>
+													<p:message id="firstname_error" for="firstname"></p:message>
+												</p:column>
+											</p:row>
+											<p:row>
+												<p:column>
+													<p:outputLabel value="Lastname" style="margin-right:20px"></p:outputLabel>
+												</p:column>
+												<p:column>
+													<p:inputText id="lastname" value="#{xrflRequestBean.employeeDetailStep.lastName}"></p:inputText>
+													<p:message id="lastname_error" for="lastname"></p:message>
+												</p:column>
+											</p:row>
+										</p:panelGrid>
 									</p:outputPanel>
 								</p:outputPanel>
 							</p:tab>
@@ -48,12 +65,62 @@
 								titleStyleClass="xrfl-ui-steps">
 								<p:outputPanel id="xrflRequestDocumentType" layout="inline">
 									<p:outputPanel rendered="#{data.activeTabIndex == 1}">
-										<!-- <ui:include src="DocumentType.xhtml"></ui:include> -->
-										Document type
+										<p:panelGrid columns="2" styleClass="panelGroup">
+											<p:row>
+												<p:column>
+													<p:outputLabel value="Language" style="margin-right:20px"></p:outputLabel>
+												</p:column>
+												<p:column>
+													<p:selectOneMenu id="xrflAvailableLanguageCbo"
+														value="#{xrflRequestBean.documentTypeStep.requestDocumentType.docLanguage}"
+														effect="fade" styleClass="combobox_small">
+														<f:selectItem
+															itemLabel="Please choose"
+															itemValue="" />
+														<f:selectItems
+															value="#{xrflRequestBean.documentTypeStep.availableLanguages}"
+															var="item" itemLabel="#{item.description}"
+															itemValue="#{item.code}" itemDescription="#{item.description}" />
+														<p:ajax event="change" listener="#{logic.onSelectLanguage}"
+															process=":#{p:component('xrflRequestDocumentType')}"
+															partialSubmit="true" update="@form"
+															oncomplete="onComplete_ReferenceTypeSubmit(xhr, status, args);buildMainNavigator();" />
+													</p:selectOneMenu>
+													<p:message for="xrflAvailableLanguageCbo"
+														id="xrflAvailableLanguageCbo_error"></p:message>
+												</p:column>
+											</p:row>
+										</p:panelGrid>
 									</p:outputPanel>
 								</p:outputPanel>
 							</p:tab>
 						</p:tabView>
+					</p:outputPanel>
+					<p:outputPanel id="xrflMainTabButtonPanel"
+						styleClass="xrflMainTabButtonPanel">
+						<p:commandButton id="xrflBackBtn"
+							actionListener="#{logic.onClickBack}"
+							update=":#{p:component('xrflMainTabButtonPanel')}
+									,:#{p:component('xrflRequestEmpDetail')},:#{p:component('xrflRequestDocumentType')}"
+							styleClass="xrfl-main-page-btn" icon="btn-back"
+							value="back"
+							rendered="#{data.activeTabIndex != 0}"
+							oncomplete="buildMainNavigator(); onCompleteValidation(xhr, status, args);"></p:commandButton>
+						<p:commandButton id="xrflValidateBtn"
+							styleClass="xrfl-main-page-btn" icon="btn-validate"
+							value="validate"
+							actionListener="#{logic.onValidate}"
+							update="@form"
+							oncomplete="buildMainNavigator(); onCompleteValidation(xhr, status, args);">
+						</p:commandButton>
+						<p:commandButton id="xrflNextBtn"
+							actionListener="#{logic.onClickNext}"
+							update=":#{p:component('xrflMainTabButtonPanel')}
+									,:#{p:component('xrflRequestEmpDetail')},:#{p:component('xrflRequestDocumentType')}"
+							styleClass="xrfl-main-page-btn" icon="btn-forward"
+							rendered="#{data.activeTabIndex != 1}"
+							value="next"
+							oncomplete="buildMainNavigator();onCompleteValidation(xhr, status, args);"></p:commandButton>
 					</p:outputPanel>
 			</h:form>
 			</p:outputPanel>
