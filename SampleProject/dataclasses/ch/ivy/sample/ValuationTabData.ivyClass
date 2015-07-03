@@ -1,0 +1,14 @@
+ValuationTabData #class
+ch.ivy.sample #namespace
+viewHeader String #field
+viewHeader PERSISTENT #fieldModifier
+isEditMode Boolean #field
+isEditMode PERSISTENT #fieldModifier
+supportedLanguagues java.util.List<java.util.Locale> #field
+supportedLanguagues PERSISTENT #fieldModifier
+validationUtil ch.ivy.sample.util.ValidationUtils #field
+validationUtil PERSISTENT #fieldModifier
+valuationDataModel ch.ivy.sample.viewmodel.ValuationDataModel #field
+valuationDataModel PERSISTENT #fieldModifier
+selectedValuation ch.ivy.sample.dto.ValuationDTO #field
+selectedValuation PERSISTENT #fieldModifier

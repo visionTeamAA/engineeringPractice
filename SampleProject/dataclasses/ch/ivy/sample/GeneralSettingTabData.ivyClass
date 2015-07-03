@@ -1,0 +1,8 @@
+GeneralSettingTabData #class
+ch.ivy.sample #namespace
+currentAvailableTemplate ch.ivy.sample.bean.AvailableTemplate #field
+availableLanguageData ch.ivy.sample.bean.AvailableLanguageData #field
+otherSettings ch.ivy.sample.bean.AdminSettingsData #field
+employeeSearchSetting ch.ivy.sample.bean.EmployeeSearchSettingsData #field
+employeePermissionSettings ch.ivy.sample.bean.EmployeePermissionSettingData #field
+errorCode java.lang.Integer #field

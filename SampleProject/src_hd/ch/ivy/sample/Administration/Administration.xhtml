@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:pm="http://primefaces.org/mobile"
+	xmlns:pt="http://soreco.ch/placeholder">
+<h:body>
+	<ui:composition template="/layouts/basic.xhtml">
+		<ui:define name="content">
+			<f:view >
+				<p:outputPanel layout="block" id="xrflWarningMessage" styleClass="ui-corner-all ui-message-error group"
+			 		rendered="#{data.isSupportedLanguagesEmpty}">
+			 		<p:outputPanel>
+						<span class="ui-messages-error-icon"></span>
+					</p:outputPanel>
+					<p:outputPanel>
+						<h:outputText value="#{ivy.cms.co('/ch/soreco/standard/xrfl/common/message/errorInConfiguration')}"></h:outputText>	
+					</p:outputPanel>
+			 	</p:outputPanel>
+				<p:outputPanel id="xrflParent" layout="block" styleClass="xrfl-parent xrfl-setting-min-width" rendered="#{!data.isSupportedLanguagesEmpty}">
+					<h:form id="xrflAdministrationPageForm" enctype="multipart/form-data">
+						<p:outputPanel id="xrflAdminTabViewPnl">
+							<p:tabView id="xrflAdminTabView"
+								widgetVar="xrflAdminTabViewVar"
+								activeIndex="#{data.activeTabIndex}">
+								<p:ajax global="true" event="tabChange"
+									listener="#{logic.onTabChange}"
+									partialSubmit="true" process="@this" 
+									update="@form"/>
+									
+								<p:tab id="xrflAdminGeneralSettingTab"   
+									title="General Setting">
+									<p:outputPanel rendered="#{data.activeTabIndex == 0}">
+										<ui:include src="GeneralSettingsTab.xhtml"></ui:include>
+									</p:outputPanel>
+								</p:tab>
+								
+								<p:tab id="xrflAdminValuationTab" 
+									title="Valuation">
+									<p:outputPanel rendered="#{data.activeTabIndex == 1}">
+										<ui:include src="ValuationTab.xhtml"></ui:include>
+									</p:outputPanel>
+								</p:tab>
+							</p:tabView>
+						</p:outputPanel>
+					</h:form>
+				</p:outputPanel>	
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

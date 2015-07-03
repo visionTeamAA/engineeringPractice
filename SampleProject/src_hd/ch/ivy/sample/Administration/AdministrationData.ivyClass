@@ -1,0 +1,38 @@
+AdministrationData #class
+ch.ivy.sample.Administration #namespace
+activeTabIndex java.lang.Integer #field
+activeTabIndex PERSISTENT #fieldModifier
+currentLangCode String #field
+currentLangCode PERSISTENT #fieldModifier
+currentLocale java.util.Locale #field
+currentLocale PERSISTENT #fieldModifier
+endDroppingIndex java.lang.Integer #field
+endDroppingIndex 'index of item after drop' #fieldComment
+endDroppingIndex PERSISTENT #fieldModifier
+errorCode java.lang.Integer #field
+errorCode 'error code' #fieldComment
+errorCode PERSISTENT #fieldModifier
+errorMessage String #field
+errorMessage PERSISTENT #fieldModifier
+generalSettingTab ch.ivy.sample.GeneralSettingTabData #field
+generalSettingTab PERSISTENT #fieldModifier
+orderOfDeletedItem java.lang.Integer #field
+orderOfDeletedItem 'order of item that just be deleted' #fieldComment
+orderOfDeletedItem PERSISTENT #fieldModifier
+pvm String #field
+pvm PERSISTENT #fieldModifier
+recordPerPage String #field
+recordPerPage PERSISTENT #fieldModifier
+startDraggingIndex java.lang.Integer #field
+startDraggingIndex 'index of item before drag' #fieldComment
+startDraggingIndex PERSISTENT #fieldModifier
+valuationTab ch.ivy.sample.ValuationTabData #field
+valuationTab PERSISTENT #fieldModifier
+isKeepDisplayingSubTable Boolean #field
+isKeepDisplayingSubTable 'use to keep display of second table on tab have 2 tables' #fieldComment
+isKeepDisplayingSubTable PERSISTENT #fieldModifier
+isXpertlineUsed Boolean #field
+isXpertlineUsed PERSISTENT #fieldModifier
+isSupportedLanguagesEmpty Boolean #field
+isSupportedLanguagesEmpty 'to check supported languages is empty or not \ if it is empty then show the message for the user whenever they go to admin page' #fieldComment
+isSupportedLanguagesEmpty PERSISTENT #fieldModifier
