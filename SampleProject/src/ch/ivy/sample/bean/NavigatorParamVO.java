@@ -13,12 +13,14 @@ public final class NavigatorParamVO {
 	private EntryType forEntry;
 	private boolean isOnLoadSubStep;
 	private MainPageTab callerStepIndicator;
-	
-	private NavigatorParamVO(boolean isOnLoadMainStep, boolean checkSpecialCondition ) {
+	private boolean hasSetStatusOnStep;
+
+	private NavigatorParamVO(boolean isOnLoadMainStep,
+			boolean checkSpecialCondition) {
 		this.isOnLoadMainStep = isOnLoadMainStep;
 		this.checkSpecialCondition = checkSpecialCondition;
 	}
-	
+
 	public boolean isOnLoadMainStep() {
 		return isOnLoadMainStep;
 	}
@@ -43,7 +45,6 @@ public final class NavigatorParamVO {
 		this.forEntry = forEntry;
 	}
 
-
 	public boolean isOnLoadSubStep() {
 		return isOnLoadSubStep;
 	}
@@ -60,6 +61,13 @@ public final class NavigatorParamVO {
 		this.callerStepIndicator = currentIndicator;
 	}
 
+	public boolean isHasSetStatusOnStep() {
+		return hasSetStatusOnStep;
+	}
+
+	public void setHasSetStatusOnStep(boolean hasSetStatusOnStep) {
+		this.hasSetStatusOnStep = hasSetStatusOnStep;
+	}
 
 	public final static class NavigatorParamBuilder {
 		private boolean isOnLoadMainStep;
@@ -67,16 +75,23 @@ public final class NavigatorParamVO {
 		private EntryType forEntry;
 		private boolean isOnLoadSubStep;
 		private MainPageTab callerStepIndicator;
-		
-		private NavigatorParamBuilder(){
+		private boolean hasSetStatusOnStep;
+
+		private NavigatorParamBuilder() {
 			this.isOnLoadMainStep = false;
 			this.checkSpecialCondition = false;
 			this.forEntry = EntryType.UNKNOWN;
 			this.callerStepIndicator = MainPageTab.UNKNOWN;
+			this.hasSetStatusOnStep = true;
 		}
-		
-		public static NavigatorParamBuilder createBuilder(){
+
+		public static NavigatorParamBuilder createBuilder() {
 			return new NavigatorParamBuilder();
+		}
+
+		public NavigatorParamBuilder setStatusOnStep(boolean hasSetStatusOnStep) {
+			this.hasSetStatusOnStep = hasSetStatusOnStep;
+			return this;
 		}
 
 		public NavigatorParamBuilder setOnLoadMainStep(boolean isOnLoadMainStep) {
@@ -84,34 +99,38 @@ public final class NavigatorParamVO {
 			return this;
 		}
 
-		public NavigatorParamBuilder setCheckSpecialCondition(boolean checkSpecialCondition) {
+		public NavigatorParamBuilder setCheckSpecialCondition(
+				boolean checkSpecialCondition) {
 			this.checkSpecialCondition = checkSpecialCondition;
 			return this;
 		}
-		
+
 		public NavigatorParamBuilder setOnLoadSubStep(boolean isOnLoadSubStep) {
 			this.isOnLoadSubStep = isOnLoadSubStep;
 			return this;
 		}
-		
-		public NavigatorParamBuilder setForEntry( EntryType forEntry) {
+
+		public NavigatorParamBuilder setForEntry(EntryType forEntry) {
 			this.forEntry = forEntry;
 			return this;
 		}
-		
-		public NavigatorParamBuilder setCallerStepIndicator( MainPageTab indicator) {
+
+		public NavigatorParamBuilder setCallerStepIndicator(
+				MainPageTab indicator) {
 			this.callerStepIndicator = indicator;
 			return this;
 		}
 
-		public NavigatorParamVO createParam(){
-			NavigatorParamVO item = new NavigatorParamVO(this.isOnLoadMainStep, this.checkSpecialCondition);
+		public NavigatorParamVO createParam() {
+			NavigatorParamVO item = new NavigatorParamVO(this.isOnLoadMainStep,
+					this.checkSpecialCondition);
 			item.setForEntry(forEntry);
 			item.setOnLoadSubStep(this.isOnLoadSubStep);
 			item.setCallerStepIndicator(this.callerStepIndicator);
+			item.setHasSetStatusOnStep(this.hasSetStatusOnStep);
 			return item;
 		}
-		
+
 	}
 	
 }

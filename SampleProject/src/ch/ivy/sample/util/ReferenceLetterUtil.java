@@ -1,5 +1,14 @@
 package ch.ivy.sample.util;
 
+import ch.ivy.sample.bean.ConstantVariable;
+import ch.ivy.sample.bean.ReferenceLetterRequestBean;
+import ch.ivy.sample.enums.MainPageTab;
+import ch.ivy.sample.navigator.AbstractReferenceNavigator;
+import ch.ivy.sample.navigator.DocumentTypeNavigator;
+import ch.ivy.sample.navigator.EmployeeDetailNavigator;
+
+
+
 public class ReferenceLetterUtil {
 	private static final String ROLE_EMPLOYEE = "employee";
 	private static final String ROLE_EVERYBODY = "everybody";
@@ -10,6 +19,25 @@ public class ReferenceLetterUtil {
 			return true;
 		} 
 		return false;
+	}
+	public static AbstractReferenceNavigator getChainOfNavigator(){
+		EmployeeDetailNavigator emp = new EmployeeDetailNavigator(MainPageTab.EMPLOYEE_DETAIL);
+		DocumentTypeNavigator documentType = new DocumentTypeNavigator(MainPageTab.DOCUMENT_TYPE);
+		
+		
+		emp.setNextStep(documentType);
+		emp.setPrevStep(null);
+		documentType.setNextStep(null);
+		documentType.setPrevStep(emp);
+		
+		return emp;
+	}
+	public static ReferenceLetterRequestBean getReferenceLetterRequestBean(){
+		return FacesUtils.findBean(ConstantVariable.XRFL_REQUEST_BEAN);
+	}
+	
+	public static void buildStatusForBeanDTO(ReferenceLetterRequestBean bean) {	
+		
 	}
 	
 }

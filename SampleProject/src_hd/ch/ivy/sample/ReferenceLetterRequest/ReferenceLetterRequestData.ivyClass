@@ -4,3 +4,7 @@ activeTabIndex java.lang.Integer #field
 activeTabIndex PERSISTENT #fieldModifier
 activeTabIndexTemporary java.lang.Integer #field
 activeTabIndexTemporary PERSISTENT #fieldModifier
+referenceNavigator ch.ivy.sample.navigator.NavigatorManager #field
+referenceNavigator PERSISTENT #fieldModifier
+referenceRequestBean ch.ivy.sample.bean.ReferenceLetterRequestBean #field
+referenceRequestBean PERSISTENT #fieldModifier

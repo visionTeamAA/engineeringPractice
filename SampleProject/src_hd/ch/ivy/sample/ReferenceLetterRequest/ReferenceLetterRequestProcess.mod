@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Jul 03 14:01:17 ICT 2015]
+[>Created: Fri Jul 03 14:23:01 ICT 2015]
 14E47CF40CA27A1E 3.17 #module
 >Proto >Proto Collection #zClass
 Rs0 ReferenceLetterRequestProcess Big #zClass
@@ -75,18 +75,20 @@ Rs0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f3 499 51 26 26 16 0 #rect
+Rs0 f3 539 75 26 26 16 0 #rect
 Rs0 f3 @|RichDialogMethodStartIcon #fIcon
 Rs0 f4 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
-Rs0 f4 499 275 26 26 16 0 #rect
+Rs0 f4 539 299 26 26 16 0 #rect
 Rs0 f4 @|RichDialogProcessEndIcon #fIcon
 Rs0 f6 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
 ' #txt
 Rs0 f6 actionTable 'out=in;
 ' #txt
-Rs0 f6 actionCode 'in.activeTabIndex = 0;
+Rs0 f6 actionCode 'import ch.ivy.sample.navigator.NavigatorManager;
+in.activeTabIndex = 0;
 in.activeTabIndexTemporary = 0;
-ivy.log.info("Huong test commit SVN");' #txt
+in.referenceNavigator = NavigatorManager.createInstance();
+' #txt
 Rs0 f6 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -128,12 +130,12 @@ Rs0 f8 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f8 456 170 112 44 -41 -8 #rect
+Rs0 f8 496 194 112 44 -41 -8 #rect
 Rs0 f8 @|StepIcon #fIcon
 Rs0 f9 expr out #txt
-Rs0 f9 512 77 512 170 #arcP
+Rs0 f9 552 101 552 194 #arcP
 Rs0 f5 expr out #txt
-Rs0 f5 512 214 512 275 #arcP
+Rs0 f5 552 238 552 299 #arcP
 Rs0 f10 guid 14E5220A88C69699 #txt
 Rs0 f10 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f10 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
@@ -185,12 +187,12 @@ Rs0 f16 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f16 947 83 26 26 -34 12 #rect
+Rs0 f16 939 83 26 26 -34 12 #rect
 Rs0 f16 @|RichDialogProcessStartIcon #fIcon
 Rs0 f17 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
-Rs0 f17 947 211 26 26 0 12 #rect
+Rs0 f17 939 211 26 26 0 12 #rect
 Rs0 f17 @|RichDialogProcessEndIcon #fIcon
-Rs0 f18 960 109 960 211 #arcP
+Rs0 f18 952 109 952 211 #arcP
 Rs0 f19 guid 14E52B828DCB54FB #txt
 Rs0 f19 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f19 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
@@ -204,12 +206,12 @@ Rs0 f19 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f19 1043 83 26 26 -52 12 #rect
+Rs0 f19 1371 83 26 26 -52 12 #rect
 Rs0 f19 @|RichDialogProcessStartIcon #fIcon
 Rs0 f20 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
-Rs0 f20 1043 211 26 26 0 12 #rect
+Rs0 f20 1371 211 26 26 0 12 #rect
 Rs0 f20 @|RichDialogProcessEndIcon #fIcon
-Rs0 f21 1056 109 1056 211 #arcP
+Rs0 f21 1384 109 1384 211 #arcP
 >Proto Rs0 .type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 >Proto Rs0 .processKind HTML_DIALOG #txt
 >Proto Rs0 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -220,7 +222,7 @@ Rs0 f21 1056 109 1056 211 #arcP
     </language>
     <swimlaneOrientation>true</swimlaneOrientation>
     <swimlaneSize>424</swimlaneSize>
-    <swimlaneSize>456</swimlaneSize>
+    <swimlaneSize>1088</swimlaneSize>
     <swimlaneColor gradient="false">-16711936</swimlaneColor>
     <swimlaneColor gradient="false">-256</swimlaneColor>
     <swimlaneType>LANE</swimlaneType>

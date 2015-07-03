@@ -27,7 +27,8 @@ public class ResponseData {
 	private boolean needToSynchronize;
 	private boolean isSynchronized;
 	private boolean isStopSynchronization;
-	
+	private boolean hasSetStatusOnStep;
+
 
 	public ResponseData() {
 		isDataSaved = true;
@@ -46,6 +47,7 @@ public class ResponseData {
 		this.needToValidate = false;
 		isStopSynchronization = false;
 		needToSynchronize = false;
+		hasSetStatusOnStep = true;
 	}
 
 	public MainPageTab getNewTabIndicator() {
@@ -150,7 +152,8 @@ public class ResponseData {
 			boolean isClearError) {
 		switch (activeTab) {
 		case EMPLOYEE_DETAIL:
-			this.empDetailValidationResult.sendErrorWithJSONSupport(isClearError);
+			this.empDetailValidationResult
+					.sendErrorWithJSONSupport(isClearError);
 			break;
 		case DOCUMENT_TYPE:
 			this.docTypeValidationResult.sendErrorWithJSONSupport(isClearError);
@@ -159,7 +162,8 @@ public class ResponseData {
 			this.taskValidationResult.sendErrorWithJSONSupport(isClearError);
 			break;
 		case COMPETENCE:
-			this.competenceValidationResult.sendErrorWithJSONSupport(isClearError);
+			this.competenceValidationResult
+					.sendErrorWithJSONSupport(isClearError);
 		default:
 			break;
 		}
@@ -253,6 +257,14 @@ public class ResponseData {
 
 	public void setCheckedStepUntouched(boolean isCheckedStepUntouched) {
 		this.isCheckedStepUntouched = isCheckedStepUntouched;
+	}
+
+	public boolean isHasSetStatusOnStep() {
+		return hasSetStatusOnStep;
+	}
+
+	public void setHasSetStatusOnStep(boolean hasSetStatusOnStep) {
+		this.hasSetStatusOnStep = hasSetStatusOnStep;
 	}
 	
 }
