@@ -8,7 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import ch.ivy.sample.bean.BusinessException;
 import ch.ivy.sample.bean.NavigatorParamVO;
 import ch.ivy.sample.bean.ReferenceLetterRequestBean;
-import ch.ivy.sample.bean.ResponseData;
+import ch.ivy.sample.bean.TransferData;
 import ch.ivy.sample.bean.ValidationMessages;
 import ch.ivy.sample.enums.Action;
 import ch.ivy.sample.enums.MainPageTab;
@@ -29,36 +29,36 @@ public class DocumentTypeNavigator extends AbstractReferenceNavigator {
 	protected ReferenceLetterRequestBean doLoad(
 			ReferenceLetterRequestBean bean, Action action)
 			throws BusinessException {
-		// TODO Auto-generated method stub
+		Ivy.log().info("DoLoad:" + this.getClass().getName());
 		return null;
 	}
 
 	@Override
 	protected void doNext(ReferenceLetterRequestBean bean)
 			throws BusinessException {
-		// TODO Auto-generated method stub
+		Ivy.log().info("DoNext:" + this.getClass().getName());
 		
 	}
 
 	@Override
 	protected void doBack(ReferenceLetterRequestBean bean)
 			throws BusinessException {
-		// TODO Auto-generated method stub
+		Ivy.log().info("DoBack:" + this.getClass().getName());
 		
 	}
 
 	@Override
 	protected void doValidate(ReferenceLetterRequestBean bean,
-			ResponseData response, NavigatorParamVO additionalParam)
+			TransferData response, NavigatorParamVO additionalParam)
 			throws BusinessException {
-		// TODO Auto-generated method stub
+		Ivy.log().info("DoValidate:" + this.getClass().getName());
 		
 	}
 
 	@Override
 	protected void doSaveSwitchTab(ReferenceLetterRequestBean bean)
 			throws BusinessException {
-		// TODO Auto-generated method stub
+		Ivy.log().info("DoSaveSwitchTab:" + this.getClass().getName());
 		
 	}
 

@@ -2,6 +2,7 @@ package ch.ivy.sample.bean;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -9,7 +10,12 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "xrflRequestBean")
 @SessionScoped
 public class ReferenceLetterRequestBean implements Serializable {
-
+	@PostConstruct
+	public void init(){
+		this.employeeDetailStep = new RequestEmployeeDetailStep();
+		this.documentTypeStep = new RequestDocumentTypeStep();
+	}
+	
 	private static final long serialVersionUID = -5730460710754409952L;
 	private RequestEmployeeDetailStep employeeDetailStep;
 	private RequestDocumentTypeStep documentTypeStep;

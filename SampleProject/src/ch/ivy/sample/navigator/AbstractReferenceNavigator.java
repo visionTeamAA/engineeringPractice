@@ -5,7 +5,7 @@ import java.io.Serializable;
 import ch.ivy.sample.bean.BusinessException;
 import ch.ivy.sample.bean.NavigatorParamVO;
 import ch.ivy.sample.bean.ReferenceLetterRequestBean;
-import ch.ivy.sample.bean.ResponseData;
+import ch.ivy.sample.bean.TransferData;
 import ch.ivy.sample.bean.ValidationMessages;
 import ch.ivy.sample.enums.Action;
 import ch.ivy.sample.enums.MainPageTab;
@@ -29,11 +29,11 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 	abstract protected ReferenceLetterRequestBean doLoad(ReferenceLetterRequestBean bean, Action action) throws BusinessException;
 	abstract protected void doNext(ReferenceLetterRequestBean bean) throws BusinessException;
 	abstract protected void doBack(ReferenceLetterRequestBean bean) throws BusinessException;
-	abstract protected void doValidate(ReferenceLetterRequestBean bean, ResponseData response, NavigatorParamVO additionalParam) throws BusinessException;	
+	abstract protected void doValidate(ReferenceLetterRequestBean bean, TransferData response, NavigatorParamVO additionalParam) throws BusinessException;	
 	abstract protected void doSaveSwitchTab(ReferenceLetterRequestBean bean)throws BusinessException;
 	abstract protected StepStatus getStepStatus(ReferenceLetterRequestBean bean);
 	
-	public ResponseData performNext(MainPageTab currentStep, ReferenceLetterRequestBean bean, ResponseData response) throws BusinessException{
+	public TransferData performNext(MainPageTab currentStep, ReferenceLetterRequestBean bean, TransferData response) throws BusinessException{
 		if(this.stepIndicator.getIndex() == currentStep.getIndex()){	
 			response = getResponseData(response);
 			try{
@@ -55,7 +55,7 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 	
 	
 	
-	public ResponseData performLoad(MainPageTab tab, ReferenceLetterRequestBean bean, ResponseData response, Action action) throws BusinessException{
+	public TransferData performLoad(MainPageTab tab, ReferenceLetterRequestBean bean, TransferData response, Action action) throws BusinessException{
 		if(this.stepIndicator.getIndex() == tab.getIndex()){	
 			response = getResponseData(response);
 			try{
@@ -72,7 +72,7 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 		return response;
 	}
 	
-	public ResponseData performBack(MainPageTab currentStep, ReferenceLetterRequestBean bean, ResponseData response) throws BusinessException{
+	public TransferData performBack(MainPageTab currentStep, ReferenceLetterRequestBean bean, TransferData response) throws BusinessException{
 		if(this.stepIndicator.getIndex() == currentStep.getIndex()){
 			response = getResponseData(response);
 			try{
@@ -92,14 +92,14 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 		}
 		return response;
 	}
-	private ResponseData getResponseData(ResponseData response) {
+	private TransferData getResponseData(TransferData response) {
 		if(response == null){
-			response = new ResponseData();
+			response = new TransferData();
 		}
 		return response;
 	}
 	
-	public ResponseData performSaveSwitchTab(MainPageTab oldStep, ReferenceLetterRequestBean bean, ResponseData response) throws BusinessException{
+	public TransferData performSaveSwitchTab(MainPageTab oldStep, ReferenceLetterRequestBean bean, TransferData response) throws BusinessException{
 		if(this.stepIndicator.getIndex() == oldStep.getIndex()){
 			response = getResponseData(response);
 			try{
@@ -117,7 +117,7 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 		return response;
 	}
 	
-	public ResponseData performValidate(MainPageTab level, ReferenceLetterRequestBean bean, ResponseData response, NavigatorParamVO param) throws BusinessException{
+	public TransferData performValidate(MainPageTab level, ReferenceLetterRequestBean bean, TransferData response, NavigatorParamVO param) throws BusinessException{
 		if(this.stepIndicator.getIndex() == level.getIndex()){
 			response = getResponseData(response);
 			try{
@@ -200,7 +200,7 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 		this.description = level.getDescription();
 	}
 	
-	private void handleException(ResponseData response, Exception ex) {
+	private void handleException(TransferData response, Exception ex) {
 		response.setHasException(true);
 		if(ex instanceof BusinessException){
 			response.setException((BusinessException)ex);

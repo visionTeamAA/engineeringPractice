@@ -8,3 +8,5 @@ referenceNavigator ch.ivy.sample.navigator.NavigatorManager #field
 referenceNavigator PERSISTENT #fieldModifier
 referenceRequestBean ch.ivy.sample.bean.ReferenceLetterRequestBean #field
 referenceRequestBean PERSISTENT #fieldModifier
+transferData ch.ivy.sample.bean.TransferData #field
+transferData PERSISTENT #fieldModifier

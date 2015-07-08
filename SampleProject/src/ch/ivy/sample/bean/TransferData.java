@@ -4,7 +4,7 @@ import ch.ivy.sample.enums.MainPageTab;
 import ch.ivy.sample.util.ValidationUtils;
 
 
-public class ResponseData {
+public class TransferData {
 	private ValidationUtils empDetailValidationResult;
 	private ValidationUtils docTypeValidationResult;
 	private ValidationUtils taskValidationResult;
@@ -30,7 +30,7 @@ public class ResponseData {
 	private boolean hasSetStatusOnStep;
 
 
-	public ResponseData() {
+	public TransferData() {
 		isDataSaved = true;
 		isDataLoaded = true;
 		canChangeTab = true;
