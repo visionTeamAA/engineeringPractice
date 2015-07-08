@@ -30,9 +30,6 @@ public class NavigatorManager {
 																			.setCheckSpecialCondition(false)
 																			.setOnLoadSubStep(false)
 																			.createParam()); 
-		//build step status to save to DB
-		ReferenceLetterUtil.buildStatusForBeanDTO(bean);
-
 		navigator.performNext(tab, bean, response);
 		if(isNewTabIndexValid(response) && response.getIsDataSaved()){
 			processNewStepData(tab, response, bean, Action.NEXT);
@@ -92,7 +89,6 @@ public class NavigatorManager {
 																				.setCheckSpecialCondition(false)
 																				.setOnLoadSubStep(false)
 																				.createParam()); 
-		ReferenceLetterUtil.buildStatusForBeanDTO(bean);
 		
 		navigator.performSaveSwitchTab(oldTab, bean, response);
 		if(response.getIsDataSaved()){
