@@ -36,8 +36,5 @@ public class ReferenceLetterUtil {
 		return FacesUtils.findBean(ConstantVariable.XRFL_REQUEST_BEAN);
 	}
 	
-	public static void buildStatusForBeanDTO(ReferenceLetterRequestBean bean) {	
-		
-	}
 	
 }
