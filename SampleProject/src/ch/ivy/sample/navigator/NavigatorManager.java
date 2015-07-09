@@ -2,8 +2,6 @@ package ch.ivy.sample.navigator;
 
 import ch.ivy.sample.bean.BusinessException;
 import ch.ivy.sample.bean.NavigatorParamVO;
-import ch.ivy.sample.bean.NavigatorParamVO.NavigatorParamBuilder;
-import ch.ivy.sample.bean.ReferenceLetterRequestBean;
 import ch.ivy.sample.bean.TransferData;
 import ch.ivy.sample.enums.Action;
 import ch.ivy.sample.enums.EntryType;
@@ -64,27 +62,20 @@ public class NavigatorManager {
 		loadAndValidateNewStepIfNeeded(param, response);
 	}
 	
-	/*public TransferData switchTab(MainPageTab oldTab, MainPageTab newTab) throws BusinessException{
-		ReferenceLetterRequestBean bean =  ReferenceLetterUtil.getReferenceLetterRequestBean();
+	public TransferData switchTab(NavigatorParamVO param) throws BusinessException{
 		TransferData response = new TransferData();
-		navigator.performValidate(oldTab, bean, response, NavigatorParamBuilder.createBuilder()
-																				.setForEntry(getEntryTypeByTabIndex(oldTab, newTab))
-																				.setOnLoadMainStep(false)
-																				.setCheckSpecialCondition(false)
-																				.setOnLoadSubStep(false)
-																				.createParam()); 
+		param.setForEntry(getEntryTypeByTabIndex(param.getOldTab(), param.getCurrentTab()));
+		navigator.performValidate(param, response); 
 		
-		navigator.performSaveSwitchTab(oldTab, bean, response);
+		navigator.performSaveSwitchTab(param, response);
 		if(response.getIsDataSaved()){
-			processNewStepDataWhenSwitchTab(oldTab, newTab, bean, response);
+			processNewStepDataWhenSwitchTab(param, response);
 		}
 		
 		return response;
-	}*/
+	}
 	
-	/*public TransferData switchTab(MainPageTab currentTab) throws BusinessException{
-		return switchTab(currentTab, currentTab);
-	}*/
+	
 	
 	private EntryType getEntryTypeByTabIndex(MainPageTab oldTab, MainPageTab newTab) {
 		EntryType forType = EntryType.NEW_ENTRY;
@@ -94,23 +85,23 @@ public class NavigatorManager {
 		return forType;
 	}
 	
-	/*public void processNewStepDataWhenSwitchTab(MainPageTab oldTab,
-			MainPageTab newTab, ReferenceLetterRequestBean bean,
+	public void processNewStepDataWhenSwitchTab(NavigatorParamVO param,
 			TransferData response) throws BusinessException {
-		checkMovingCondition(newTab, response);
+		checkMovingCondition(response);
 		if(response.isCanChangeTab()){
-			navigator.performLoad(newTab, bean, response, Action.SWITCH);
-			navigator.performValidate(newTab, bean, response, NavigatorParamBuilder.createBuilder()
-																					.setForEntry(EntryType.NEW_ENTRY)
-																					.setOnLoadMainStep(true)
-																					.setCheckSpecialCondition(true)
-																					.setOnLoadSubStep(true)
-																					.createParam());
-			response.getTabInfo().setNewTab(newTab);
+			param.setAction(Action.SWITCH);
+			param.setForEntry(EntryType.NEW_ENTRY);
+			param.setOnLoadMainStep(true);
+			param.setCheckSpecialCondition(true);
+			param.setOnLoadSubStep(true);
+			
+			navigator.performLoad(param, response);
+			navigator.performValidate(param, response);
+			response.setNewTab(param.getCurrentTab());
 			
 		}
 		
-	}*/
+	}
 
 	
 	public TransferData validate(NavigatorParamVO param, TransferData transferData) throws BusinessException{
@@ -130,12 +121,9 @@ public class NavigatorManager {
 	public String getDescription(){
 		return this.navigator.getDescription();
 	}
-	
-	
 	private boolean isNewTabIndexValid(TransferData response) {
 		return response.getNewTab().getIndex() != MainPageTab.UNKNOWN.getIndex();
 	}
-	
 	
 	private TransferData checkMovingCondition(TransferData response) throws BusinessException {
 		if(response == null){
