@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Jul 09 00:22:49 ICT 2015]
+[>Created: Thu Jul 09 13:54:49 ICT 2015]
 14E47CF40CA27A1E 3.17 #module
 >Proto >Proto Collection #zClass
 Rs0 ReferenceLetterRequestProcess Big #zClass
@@ -235,7 +235,7 @@ Rs0 f24 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestD
 ' #txt
 Rs0 f24 actionTable 'out=in;
 ' #txt
-Rs0 f24 actionCode 'in.activeTabIndex = in.transferData.getNewTabIndicator().index;
+Rs0 f24 actionCode 'in.activeTabIndex = in.transferData.getTabInfo().getNewTab().index;
 in.activeTabIndexTemporary = in.activeTabIndex;' #txt
 Rs0 f24 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f24 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

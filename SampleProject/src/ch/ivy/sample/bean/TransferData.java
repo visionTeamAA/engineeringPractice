@@ -5,12 +5,11 @@ import ch.ivy.sample.util.ValidationUtils;
 
 
 public class TransferData {
+	private MainTabInfo tabInfo;
 	private ValidationUtils empDetailValidationResult;
 	private ValidationUtils docTypeValidationResult;
 	private ValidationUtils taskValidationResult;
 	private ValidationUtils competenceValidationResult;
-	private MainPageTab newTabIndicator;
-	private MainPageTab oldTabIndicator;
 	private boolean isDataLoaded;
 	private boolean isDataSaved;
 	private BusinessException exception;
@@ -42,20 +41,13 @@ public class TransferData {
 		this.taskValidationResult = new ValidationUtils();
 		this.competenceValidationResult = new ValidationUtils();
 		this.exception = null;
-		this.newTabIndicator = MainPageTab.UNKNOWN;
+		this.tabInfo = new MainTabInfo();
+		this.tabInfo.setNewTab(MainPageTab.UNKNOWN);
 		this.needRefresh = false;
 		this.needToValidate = false;
 		isStopSynchronization = false;
 		needToSynchronize = false;
 		hasSetStatusOnStep = true;
-	}
-
-	public MainPageTab getNewTabIndicator() {
-		return newTabIndicator;
-	}
-
-	public void setNewTabIndicator(MainPageTab newTabIndicator) {
-		this.newTabIndicator = newTabIndicator;
 	}
 
 	public Boolean getIsDataLoaded() {
@@ -235,14 +227,6 @@ public class TransferData {
 		this.needToSynchronize = needToSynchronize;
 	}
 
-	public MainPageTab getOldTabIndicator() {
-		return oldTabIndicator;
-	}
-
-	public void setOldTabIndicator(MainPageTab oldTabIndicator) {
-		this.oldTabIndicator = oldTabIndicator;
-	}
-
 	public boolean isAllStepsFinished() {
 		return isAllStepsFinished;
 	}
@@ -266,5 +250,14 @@ public class TransferData {
 	public void setHasSetStatusOnStep(boolean hasSetStatusOnStep) {
 		this.hasSetStatusOnStep = hasSetStatusOnStep;
 	}
+
+	public MainTabInfo getTabInfo() {
+		return tabInfo;
+	}
+
+	public void setTabInfo(MainTabInfo tabInfo) {
+		this.tabInfo = tabInfo;
+	}
+	
 	
 }

@@ -43,7 +43,7 @@ public class NavigatorManager {
 	public TransferData back(MainPageTab tab) throws BusinessException{
 		TransferData response = new TransferData();
 		ReferenceLetterRequestBean bean =  ReferenceLetterUtil.getReferenceLetterRequestBean();
-		response.setOldTabIndicator(tab);
+		response.getTabInfo().setOldTab(tab);
 		if(response.isHasException()){
 			return response;
 		}
@@ -65,8 +65,8 @@ public class NavigatorManager {
 			TransferData response, ReferenceLetterRequestBean bean,
 			Action action) throws BusinessException {
 		if(response.isCanChangeTab()){
-			navigator.performLoad(response.getNewTabIndicator(), bean , response, action);
-			navigator.performValidate(response.getNewTabIndicator(), bean, response,NavigatorParamBuilder.createBuilder()
+			navigator.performLoad(response.getTabInfo().getNewTab(), bean , response, action);
+			navigator.performValidate(response.getTabInfo().getNewTab(), bean, response,NavigatorParamBuilder.createBuilder()
 																										.setForEntry(EntryType.NEW_ENTRY)
 																										.setOnLoadMainStep(true)
 																										.setCheckSpecialCondition(true)
@@ -76,7 +76,7 @@ public class NavigatorManager {
 	}
 	private void processNewStepData(MainPageTab oldTab, TransferData response,
 			ReferenceLetterRequestBean bean, Action action) throws BusinessException {
-		checkMovingCondition(response.getNewTabIndicator(), response);
+		checkMovingCondition(response.getTabInfo().getNewTab(), response);
 		loadAndValidateNewStepIfNeeded(oldTab, response, bean, action);
 	}
 	
@@ -122,7 +122,7 @@ public class NavigatorManager {
 																					.setCheckSpecialCondition(true)
 																					.setOnLoadSubStep(true)
 																					.createParam());
-			response.setNewTabIndicator(newTab);
+			response.getTabInfo().setNewTab(newTab);
 			
 		}
 		
@@ -156,7 +156,7 @@ public class NavigatorManager {
 	
 	
 	private boolean isNewTabIndexValid(TransferData response) {
-		return response.getNewTabIndicator().getIndex() != MainPageTab.UNKNOWN.getIndex();
+		return response.getTabInfo().getNewTab().getIndex() != MainPageTab.UNKNOWN.getIndex();
 	}
 	
 	

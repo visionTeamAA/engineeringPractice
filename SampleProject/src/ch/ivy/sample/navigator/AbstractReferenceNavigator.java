@@ -39,10 +39,10 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 			try{
 				doNext(bean);
 				MainPageTab nextStep = getNextStepIndicator();
-				response.setNewTabIndicator(nextStep);
+				response.getTabInfo().setNewTab(nextStep);
 			} catch(Exception ex){
 				response.setIsDataSaved(false);
-				response.setNewTabIndicator(currentStep);
+				response.getTabInfo().setNewTab(currentStep);
 				handleException(response, ex);
 			}
 			return response;	
@@ -79,10 +79,10 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 				
 				doBack(bean);
 				MainPageTab nextStep = getPrevStepIndicator();
-				response.setNewTabIndicator(nextStep);
+				response.getTabInfo().setNewTab(nextStep);
 			} catch(Exception ex){
 				response.setIsDataSaved(false);
-				response.setNewTabIndicator(currentStep);
+				response.getTabInfo().setNewTab(currentStep);
 				handleException(response, ex);
 			}
 			return response;	
@@ -106,7 +106,7 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 				doSaveSwitchTab(bean);
 			}catch(Exception ex){
 				response.setIsDataSaved(false);
-				response.setNewTabIndicator(oldStep);
+				response.getTabInfo().setNewTab(oldStep);
 				handleException(response, ex);
 			}
 			return response;

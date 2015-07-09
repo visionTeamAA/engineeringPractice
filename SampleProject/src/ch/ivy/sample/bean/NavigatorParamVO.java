@@ -14,7 +14,8 @@ public final class NavigatorParamVO {
 	private boolean isOnLoadSubStep;
 	private MainPageTab callerStepIndicator;
 	private boolean hasSetStatusOnStep;
-
+	private MainTabInfo tabInfo;
+	
 	private NavigatorParamVO(boolean isOnLoadMainStep,
 			boolean checkSpecialCondition) {
 		this.isOnLoadMainStep = isOnLoadMainStep;
@@ -67,6 +68,14 @@ public final class NavigatorParamVO {
 
 	public void setHasSetStatusOnStep(boolean hasSetStatusOnStep) {
 		this.hasSetStatusOnStep = hasSetStatusOnStep;
+	}
+
+	public MainTabInfo getTabInfo() {
+		return tabInfo;
+	}
+
+	public void setTabInfo(MainTabInfo tabInfo) {
+		this.tabInfo = tabInfo;
 	}
 
 	public final static class NavigatorParamBuilder {
