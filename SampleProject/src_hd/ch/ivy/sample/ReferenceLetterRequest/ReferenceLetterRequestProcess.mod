@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Jul 09 23:43:56 ICT 2015]
+[>Created: Thu Jul 09 23:46:29 ICT 2015]
 14E47CF40CA27A1E 3.17 #module
 >Proto >Proto Collection #zClass
 Rs0 ReferenceLetterRequestProcess Big #zClass
@@ -319,12 +319,13 @@ Rs0 f31 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
 import ch.ivy.sample.enums.EntryType;
 import ch.ivy.sample.bean.NavigatorParamVO.NavigatorParamBuilder;
 
-NavigatorParamBuilder.createBuilder()
+in.navigatorParam=NavigatorParamBuilder.createBuilder()
 																						.setForEntry(EntryType.NEW_ENTRY)
 																						.setOnLoadMainStep(false)
 																						.setCheckSpecialCondition(false)
 																						.setOnLoadSubStep(false)
 																						.setStatusOnStep(true)
+																			.setCurrentTab(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
 																						.setXrflBean(ReferenceLetterUtil.getReferenceLetterRequestBean())
 																						.createParam();' #txt
 Rs0 f31 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
