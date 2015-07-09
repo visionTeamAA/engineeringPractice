@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Jul 09 13:54:49 ICT 2015]
+[>Created: Thu Jul 09 17:32:06 ICT 2015]
 14E47CF40CA27A1E 3.17 #module
 >Proto >Proto Collection #zClass
 Rs0 ReferenceLetterRequestProcess Big #zClass
@@ -35,13 +35,15 @@ Rs0 @RichDialogProcessStart f19 '' #zField
 Rs0 @RichDialogProcessEnd f20 '' #zField
 Rs0 @PushWFArc f21 '' #zField
 Rs0 @GridStep f22 '' #zField
-Rs0 @PushWFArc f23 '' #zField
 Rs0 @GridStep f24 '' #zField
 Rs0 @PushWFArc f25 '' #zField
 Rs0 @PushWFArc f12 '' #zField
 Rs0 @GridStep f26 '' #zField
 Rs0 @PushWFArc f27 '' #zField
 Rs0 @PushWFArc f18 '' #zField
+Rs0 @GridStep f17 '' #zField
+Rs0 @PushWFArc f28 '' #zField
+Rs0 @PushWFArc f23 '' #zField
 >Proto Rs0 Rs0 ReferenceLetterRequestProcess #zField
 Rs0 f0 guid 14E47CF40FE8C4EA #txt
 Rs0 f0 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
@@ -157,7 +159,7 @@ Rs0 f10 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 Rs0 f10 755 83 26 26 -32 12 #rect
 Rs0 f10 @|RichDialogProcessStartIcon #fIcon
 Rs0 f11 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
-Rs0 f11 755 515 26 26 0 12 #rect
+Rs0 f11 755 659 26 26 0 12 #rect
 Rs0 f11 @|RichDialogProcessEndIcon #fIcon
 Rs0 f13 guid 14E5220B34C6DF6E #txt
 Rs0 f13 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
@@ -216,7 +218,7 @@ Rs0 f22 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestD
 ' #txt
 Rs0 f22 actionTable 'out=in;
 ' #txt
-Rs0 f22 actionCode 'in.transferData = in.referenceNavigator.next(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex));' #txt
+Rs0 f22 actionCode 'in.transferData = in.referenceNavigator.next(in.navigatorParam);' #txt
 Rs0 f22 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f22 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -227,10 +229,8 @@ Rs0 f22 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f22 712 186 112 44 -19 -8 #rect
+Rs0 f22 712 330 112 44 -19 -8 #rect
 Rs0 f22 @|StepIcon #fIcon
-Rs0 f23 expr out #txt
-Rs0 f23 768 109 768 186 #arcP
 Rs0 f24 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
 ' #txt
 Rs0 f24 actionTable 'out=in;
@@ -247,12 +247,12 @@ Rs0 f24 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f24 712 346 112 44 -37 -8 #rect
+Rs0 f24 712 490 112 44 -37 -8 #rect
 Rs0 f24 @|StepIcon #fIcon
 Rs0 f25 expr out #txt
-Rs0 f25 768 230 768 346 #arcP
+Rs0 f25 768 374 768 490 #arcP
 Rs0 f12 expr out #txt
-Rs0 f12 768 390 768 515 #arcP
+Rs0 f12 768 534 768 659 #arcP
 Rs0 f26 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
 ' #txt
 Rs0 f26 actionTable 'out=in;
@@ -268,14 +268,46 @@ Rs0 f26 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f26 872 186 112 44 -20 -8 #rect
+Rs0 f26 872 330 112 44 -20 -8 #rect
 Rs0 f26 @|StepIcon #fIcon
 Rs0 f27 expr out #txt
-Rs0 f27 928 109 928 186 #arcP
+Rs0 f27 928 109 928 330 #arcP
 Rs0 f18 expr out #txt
-Rs0 f18 928 230 824 368 #arcP
-Rs0 f18 1 928 368 #addKink
+Rs0 f18 928 374 824 512 #arcP
+Rs0 f18 1 928 512 #addKink
 Rs0 f18 1 0.07276975031671618 0 0 #arcLabel
+Rs0 f17 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
+' #txt
+Rs0 f17 actionTable 'out=in;
+' #txt
+Rs0 f17 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
+import ch.ivy.sample.enums.EntryType;
+import ch.ivy.sample.bean.NavigatorParamVO.NavigatorParamBuilder;
+
+in.navigatorParam = NavigatorParamBuilder.createBuilder()
+																			.setForEntry(EntryType.OLD_ENTRY)
+																			.setOnLoadMainStep(false)
+																			.setCheckSpecialCondition(false)
+																			.setOnLoadSubStep(false)
+																			.setCurrentTabIndicator(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
+																			.setXrflBean(ReferenceLetterUtil.getReferenceLetterRequestBean())
+																			.createParam();' #txt
+Rs0 f17 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
+Rs0 f17 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>build param</name>
+        <nameStyle>11,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Rs0 f17 712 170 112 44 -33 -8 #rect
+Rs0 f17 @|StepIcon #fIcon
+Rs0 f28 expr out #txt
+Rs0 f28 768 109 768 170 #arcP
+Rs0 f23 expr out #txt
+Rs0 f23 768 214 768 330 #arcP
 >Proto Rs0 .type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 >Proto Rs0 .processKind HTML_DIALOG #txt
 >Proto Rs0 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -309,8 +341,6 @@ Rs0 f13 mainOut f15 tail #connect
 Rs0 f15 head f14 mainIn #connect
 Rs0 f19 mainOut f21 tail #connect
 Rs0 f21 head f20 mainIn #connect
-Rs0 f10 mainOut f23 tail #connect
-Rs0 f23 head f22 mainIn #connect
 Rs0 f22 mainOut f25 tail #connect
 Rs0 f25 head f24 mainIn #connect
 Rs0 f24 mainOut f12 tail #connect
@@ -319,3 +349,7 @@ Rs0 f16 mainOut f27 tail #connect
 Rs0 f27 head f26 mainIn #connect
 Rs0 f26 mainOut f18 tail #connect
 Rs0 f18 head f24 mainIn #connect
+Rs0 f10 mainOut f28 tail #connect
+Rs0 f28 head f17 mainIn #connect
+Rs0 f17 mainOut f23 tail #connect
+Rs0 f23 head f22 mainIn #connect

@@ -10,3 +10,5 @@ referenceRequestBean ch.ivy.sample.bean.ReferenceLetterRequestBean #field
 referenceRequestBean PERSISTENT #fieldModifier
 transferData ch.ivy.sample.bean.TransferData #field
 transferData PERSISTENT #fieldModifier
+navigatorParam ch.ivy.sample.bean.NavigatorParamVO #field
+navigatorParam PERSISTENT #fieldModifier

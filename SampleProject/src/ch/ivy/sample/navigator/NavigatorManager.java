@@ -1,6 +1,7 @@
 package ch.ivy.sample.navigator;
 
 import ch.ivy.sample.bean.BusinessException;
+import ch.ivy.sample.bean.NavigatorParamVO;
 import ch.ivy.sample.bean.NavigatorParamVO.NavigatorParamBuilder;
 import ch.ivy.sample.bean.ReferenceLetterRequestBean;
 import ch.ivy.sample.bean.TransferData;
@@ -21,17 +22,12 @@ public class NavigatorManager {
 		return new NavigatorManager();
 	}
 	
-	public TransferData next(MainPageTab tab) throws BusinessException{
+	public TransferData next(NavigatorParamVO param) throws BusinessException{
 		TransferData response = new TransferData();
-		ReferenceLetterRequestBean bean =  ReferenceLetterUtil.getReferenceLetterRequestBean();
-		navigator.performValidate(tab, bean, response, NavigatorParamBuilder.createBuilder()
-																			.setForEntry(EntryType.OLD_ENTRY)
-																			.setOnLoadMainStep(false)
-																			.setCheckSpecialCondition(false)
-																			.setOnLoadSubStep(false)
-																			.createParam()); 
-		navigator.performNext(tab, bean, response);
+		navigator.performValidate(param, response); 
+		navigator.performNext(param, response);
 		if(isNewTabIndexValid(response) && response.getIsDataSaved()){
+			param.setAction(Action.NEXT);
 			processNewStepData(tab, response, bean, Action.NEXT);
 		}
 		return response;

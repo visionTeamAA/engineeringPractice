@@ -19,6 +19,11 @@ import ch.ivyteam.ivy.persistence.PersistencyException;
 
 public class DocumentTypeNavigator extends AbstractReferenceNavigator {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public DocumentTypeNavigator(MainPageTab step){
 		this.stepIndicator = step;
 		this.subStepIndex = -1;
@@ -26,48 +31,45 @@ public class DocumentTypeNavigator extends AbstractReferenceNavigator {
 	}
 
 	@Override
-	protected ReferenceLetterRequestBean doLoad(
-			ReferenceLetterRequestBean bean, Action action)
+	protected ReferenceLetterRequestBean doLoad(NavigatorParamVO param)
 			throws BusinessException {
 		Ivy.log().info("DoLoad:" + this.getClass().getName());
 		return null;
 	}
 
 	@Override
-	protected void doNext(ReferenceLetterRequestBean bean)
-			throws BusinessException {
-		Ivy.log().info("DoNext:" + this.getClass().getName());
+	protected void doNext(NavigatorParamVO param) throws BusinessException {
+		Ivy.log().info("doNext:" + this.getClass().getName());
 		
 	}
 
 	@Override
-	protected void doBack(ReferenceLetterRequestBean bean)
-			throws BusinessException {
-		Ivy.log().info("DoBack:" + this.getClass().getName());
+	protected void doBack(NavigatorParamVO param) throws BusinessException {
+		Ivy.log().info("doBack" + this.getClass().getName());
 		
 	}
 
 	@Override
-	protected void doValidate(ReferenceLetterRequestBean bean,
-			TransferData response, NavigatorParamVO additionalParam)
+	protected void doValidate(NavigatorParamVO param, TransferData transferData)
 			throws BusinessException {
-		Ivy.log().info("DoValidate:" + this.getClass().getName());
+		Ivy.log().info("doValidate:" + this.getClass().getName());
 		
 	}
 
 	@Override
-	protected void doSaveSwitchTab(ReferenceLetterRequestBean bean)
+	protected void doSaveSwitchTab(NavigatorParamVO param)
 			throws BusinessException {
-		Ivy.log().info("DoSaveSwitchTab:" + this.getClass().getName());
+		Ivy.log().info("doSaveSwitchTab:" + this.getClass().getName());
 		
 	}
 
 	@Override
-	protected StepStatus getStepStatus(ReferenceLetterRequestBean bean) {
-		// TODO Auto-generated method stub
+	protected StepStatus getStepStatus(NavigatorParamVO param) {
+		Ivy.log().info("getStepStatus:" + this.getClass().getName());
 		return null;
 	}
 
+	
 	
 	
 }

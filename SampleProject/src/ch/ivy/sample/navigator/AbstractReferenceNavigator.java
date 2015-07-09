@@ -26,113 +26,113 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 	protected int oldSubStepIndex;
 	protected ValidationMessages message;
 
-	abstract protected ReferenceLetterRequestBean doLoad(ReferenceLetterRequestBean bean, Action action) throws BusinessException;
-	abstract protected void doNext(ReferenceLetterRequestBean bean) throws BusinessException;
-	abstract protected void doBack(ReferenceLetterRequestBean bean) throws BusinessException;
-	abstract protected void doValidate(ReferenceLetterRequestBean bean, TransferData response, NavigatorParamVO additionalParam) throws BusinessException;	
-	abstract protected void doSaveSwitchTab(ReferenceLetterRequestBean bean)throws BusinessException;
-	abstract protected StepStatus getStepStatus(ReferenceLetterRequestBean bean);
+	abstract protected ReferenceLetterRequestBean doLoad(NavigatorParamVO param) throws BusinessException;
+	abstract protected void doNext(NavigatorParamVO param) throws BusinessException;
+	abstract protected void doBack(NavigatorParamVO param) throws BusinessException;
+	abstract protected void doValidate(NavigatorParamVO param, TransferData transferData) throws BusinessException;	
+	abstract protected void doSaveSwitchTab(NavigatorParamVO param)throws BusinessException;
+	abstract protected StepStatus getStepStatus(NavigatorParamVO param);
 	
-	public TransferData performNext(MainPageTab currentStep, ReferenceLetterRequestBean bean, TransferData response) throws BusinessException{
-		if(this.stepIndicator.getIndex() == currentStep.getIndex()){	
-			response = getResponseData(response);
+	public TransferData performNext(NavigatorParamVO param, TransferData transferData) throws BusinessException{
+		if(this.stepIndicator.getIndex() == param.getTabInfo().getCurrentTab().getIndex()){	
+			transferData = getResponseData(transferData);
 			try{
-				doNext(bean);
+				doNext(param);
 				MainPageTab nextStep = getNextStepIndicator();
-				response.getTabInfo().setNewTab(nextStep);
+				transferData.getTabInfo().setNewTab(nextStep);
 			} catch(Exception ex){
-				response.setIsDataSaved(false);
-				response.getTabInfo().setNewTab(currentStep);
-				handleException(response, ex);
+				transferData.setIsDataSaved(false);
+				transferData.getTabInfo().setNewTab(param.getTabInfo().getCurrentTab());
+				handleException(transferData, ex);
 			}
-			return response;	
+			return transferData;	
 		}		
 		if(nextStep != null){
-			response = nextStep.performNext(currentStep, bean, response);
+			transferData = nextStep.performNext(param, transferData);
 		}
-		return response;
+		return transferData;
 	}
 	
 	
 	
-	public TransferData performLoad(MainPageTab tab, ReferenceLetterRequestBean bean, TransferData response, Action action) throws BusinessException{
-		if(this.stepIndicator.getIndex() == tab.getIndex()){	
-			response = getResponseData(response);
+	public TransferData performLoad(NavigatorParamVO param, TransferData transferData) throws BusinessException{
+		if(this.stepIndicator.getIndex() == param.getTabInfo().getCurrentTab().getIndex()){	
+			transferData = getResponseData(transferData);
 			try{
-				doLoad(bean, action);	
+				doLoad(param);	
 			} catch(Exception ex){
-				response.setIsDataLoaded(false);
-				handleException(response, ex);
+				transferData.setIsDataLoaded(false);
+				handleException(transferData, ex);
 			}
-			return response;
+			return transferData;
 		}
 		if(nextStep != null){
-			response = nextStep.performLoad(tab, bean, response, action);
+			transferData = nextStep.performLoad(param, transferData );
 		}
-		return response;
+		return transferData;
 	}
 	
-	public TransferData performBack(MainPageTab currentStep, ReferenceLetterRequestBean bean, TransferData response) throws BusinessException{
-		if(this.stepIndicator.getIndex() == currentStep.getIndex()){
-			response = getResponseData(response);
+	public TransferData performBack(NavigatorParamVO param, TransferData transferData) throws BusinessException{
+		if(this.stepIndicator.getIndex() == param.getTabInfo().getCurrentTab().getIndex()){
+			transferData = getResponseData(transferData);
 			try{
 				
-				doBack(bean);
+				doBack(param);
 				MainPageTab nextStep = getPrevStepIndicator();
-				response.getTabInfo().setNewTab(nextStep);
+				transferData.getTabInfo().setNewTab(nextStep);
 			} catch(Exception ex){
-				response.setIsDataSaved(false);
-				response.getTabInfo().setNewTab(currentStep);
-				handleException(response, ex);
+				transferData.setIsDataSaved(false);
+				transferData.getTabInfo().setNewTab(param.getTabInfo().getCurrentTab());
+				handleException(transferData, ex);
 			}
-			return response;	
+			return transferData;	
 		}		
 		if(nextStep != null){
-			response = nextStep.performBack(currentStep, bean, response);
+			transferData = nextStep.performBack(param, transferData);
 		}
-		return response;
+		return transferData;
 	}
-	private TransferData getResponseData(TransferData response) {
-		if(response == null){
-			response = new TransferData();
+	private TransferData getResponseData(TransferData transferData) {
+		if(transferData == null){
+			transferData = new TransferData();
 		}
-		return response;
+		return transferData;
 	}
 	
-	public TransferData performSaveSwitchTab(MainPageTab oldStep, ReferenceLetterRequestBean bean, TransferData response) throws BusinessException{
-		if(this.stepIndicator.getIndex() == oldStep.getIndex()){
-			response = getResponseData(response);
+	public TransferData performSaveSwitchTab(NavigatorParamVO param,  TransferData transferData) throws BusinessException{
+		if(this.stepIndicator.getIndex() == param.getTabInfo().getOldTab().getIndex()){
+			transferData = getResponseData(transferData);
 			try{
-				doSaveSwitchTab(bean);
+				doSaveSwitchTab(param);
 			}catch(Exception ex){
-				response.setIsDataSaved(false);
-				response.getTabInfo().setNewTab(oldStep);
-				handleException(response, ex);
+				transferData.setIsDataSaved(false);
+				transferData.getTabInfo().setNewTab(param.getTabInfo().getOldTab());
+				handleException(transferData, ex);
 			}
-			return response;
+			return transferData;
 		}
 		if(nextStep != null){
-			response = nextStep.performSaveSwitchTab(oldStep, bean, response);
+			transferData = nextStep.performSaveSwitchTab(param, transferData);
 		}
-		return response;
+		return transferData;
 	}
 	
-	public TransferData performValidate(MainPageTab level, ReferenceLetterRequestBean bean, TransferData response, NavigatorParamVO param) throws BusinessException{
-		if(this.stepIndicator.getIndex() == level.getIndex()){
-			response = getResponseData(response);
+	public TransferData performValidate(NavigatorParamVO param, TransferData transferData) throws BusinessException{
+		if(this.stepIndicator.getIndex() == param.getTabInfo().getCurrentTab().getIndex()){
+			transferData = getResponseData(transferData);
 			try{
-				doValidate(bean, response, param);
+				doValidate(param, transferData);
 			}catch(Exception ex){
-				response.setIsDataSaved(false);
-				handleException(response, ex);
+				transferData.setIsDataSaved(false);
+				handleException(transferData, ex);
 			}
-			return response;
+			return transferData;
 		}
 		
 		if(nextStep != null){
-			response = nextStep.performValidate(level, bean, response, param);
+			transferData = nextStep.performValidate(param, transferData);
 		}
-		return response;
+		return transferData;
 	}
 	
 	private MainPageTab getNextStepIndicator(){
@@ -200,14 +200,14 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 		this.description = level.getDescription();
 	}
 	
-	private void handleException(TransferData response, Exception ex) {
-		response.setHasException(true);
+	private void handleException(TransferData transferData, Exception ex) {
+		transferData.setHasException(true);
 		if(ex instanceof BusinessException){
-			response.setException((BusinessException)ex);
+			transferData.setException((BusinessException)ex);
 		} else{
 			Ivy.log().error(ex.getMessage(), ex);
-			response.setException(new BusinessException(ch.ivy.sample.enums.Error.UNKNOWN.getCode()));
+			transferData.setException(new BusinessException(ch.ivy.sample.enums.Error.UNKNOWN.getCode()));
 		}
-		response.setNeedRefresh(ReferenceLetterUtil.checkRefreshConditionByErrorCode(response.getException().getErrorCode()));
+		transferData.setNeedRefresh(ReferenceLetterUtil.checkRefreshConditionByErrorCode(transferData.getException().getErrorCode()));
 	}
 }
