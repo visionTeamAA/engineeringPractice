@@ -5,7 +5,6 @@ import ch.ivy.sample.util.ValidationUtils;
 
 
 public class TransferData {
-	private MainTabInfo tabInfo;
 	private ValidationUtils empDetailValidationResult;
 	private ValidationUtils docTypeValidationResult;
 	private ValidationUtils taskValidationResult;
@@ -27,7 +26,14 @@ public class TransferData {
 	private boolean isSynchronized;
 	private boolean isStopSynchronization;
 	private boolean hasSetStatusOnStep;
-
+	private MainPageTab newTab;
+	
+	public MainPageTab getNewTab() {
+		return newTab;
+	}
+	public void setNewTab(MainPageTab newTab) {
+		this.newTab = newTab;
+	}
 
 	public TransferData() {
 		isDataSaved = true;
@@ -41,8 +47,7 @@ public class TransferData {
 		this.taskValidationResult = new ValidationUtils();
 		this.competenceValidationResult = new ValidationUtils();
 		this.exception = null;
-		this.tabInfo = new MainTabInfo();
-		this.tabInfo.setNewTab(MainPageTab.UNKNOWN);
+		this.setNewTab(MainPageTab.UNKNOWN);
 		this.needRefresh = false;
 		this.needToValidate = false;
 		isStopSynchronization = false;
@@ -250,14 +255,4 @@ public class TransferData {
 	public void setHasSetStatusOnStep(boolean hasSetStatusOnStep) {
 		this.hasSetStatusOnStep = hasSetStatusOnStep;
 	}
-
-	public MainTabInfo getTabInfo() {
-		return tabInfo;
-	}
-
-	public void setTabInfo(MainTabInfo tabInfo) {
-		this.tabInfo = tabInfo;
-	}
-	
-	
 }

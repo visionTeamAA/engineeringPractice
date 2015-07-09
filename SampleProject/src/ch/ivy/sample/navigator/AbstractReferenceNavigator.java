@@ -7,7 +7,6 @@ import ch.ivy.sample.bean.NavigatorParamVO;
 import ch.ivy.sample.bean.ReferenceLetterRequestBean;
 import ch.ivy.sample.bean.TransferData;
 import ch.ivy.sample.bean.ValidationMessages;
-import ch.ivy.sample.enums.Action;
 import ch.ivy.sample.enums.MainPageTab;
 import ch.ivy.sample.enums.StepStatus;
 import ch.ivy.sample.util.ReferenceLetterUtil;
@@ -34,15 +33,15 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 	abstract protected StepStatus getStepStatus(NavigatorParamVO param);
 	
 	public TransferData performNext(NavigatorParamVO param, TransferData transferData) throws BusinessException{
-		if(this.stepIndicator.getIndex() == param.getTabInfo().getCurrentTab().getIndex()){	
+		if(this.stepIndicator.getIndex() == param.getCurrentTab().getIndex()){	
 			transferData = getResponseData(transferData);
 			try{
 				doNext(param);
 				MainPageTab nextStep = getNextStepIndicator();
-				transferData.getTabInfo().setNewTab(nextStep);
+				transferData.setNewTab(nextStep);
 			} catch(Exception ex){
 				transferData.setIsDataSaved(false);
-				transferData.getTabInfo().setNewTab(param.getTabInfo().getCurrentTab());
+				transferData.setNewTab(param.getCurrentTab());
 				handleException(transferData, ex);
 			}
 			return transferData;	
@@ -56,7 +55,7 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 	
 	
 	public TransferData performLoad(NavigatorParamVO param, TransferData transferData) throws BusinessException{
-		if(this.stepIndicator.getIndex() == param.getTabInfo().getCurrentTab().getIndex()){	
+		if(this.stepIndicator.getIndex() == param.getCurrentTab().getIndex()){	
 			transferData = getResponseData(transferData);
 			try{
 				doLoad(param);	
@@ -73,16 +72,16 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 	}
 	
 	public TransferData performBack(NavigatorParamVO param, TransferData transferData) throws BusinessException{
-		if(this.stepIndicator.getIndex() == param.getTabInfo().getCurrentTab().getIndex()){
+		if(this.stepIndicator.getIndex() == param.getCurrentTab().getIndex()){
 			transferData = getResponseData(transferData);
 			try{
 				
 				doBack(param);
 				MainPageTab nextStep = getPrevStepIndicator();
-				transferData.getTabInfo().setNewTab(nextStep);
+				transferData.setNewTab(nextStep);
 			} catch(Exception ex){
 				transferData.setIsDataSaved(false);
-				transferData.getTabInfo().setNewTab(param.getTabInfo().getCurrentTab());
+				transferData.setNewTab(param.getCurrentTab());
 				handleException(transferData, ex);
 			}
 			return transferData;	
@@ -100,13 +99,13 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 	}
 	
 	public TransferData performSaveSwitchTab(NavigatorParamVO param,  TransferData transferData) throws BusinessException{
-		if(this.stepIndicator.getIndex() == param.getTabInfo().getOldTab().getIndex()){
+		if(this.stepIndicator.getIndex() == param.getOldTab().getIndex()){
 			transferData = getResponseData(transferData);
 			try{
 				doSaveSwitchTab(param);
 			}catch(Exception ex){
 				transferData.setIsDataSaved(false);
-				transferData.getTabInfo().setNewTab(param.getTabInfo().getOldTab());
+				transferData.setNewTab(param.getOldTab());
 				handleException(transferData, ex);
 			}
 			return transferData;
@@ -118,7 +117,7 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 	}
 	
 	public TransferData performValidate(NavigatorParamVO param, TransferData transferData) throws BusinessException{
-		if(this.stepIndicator.getIndex() == param.getTabInfo().getCurrentTab().getIndex()){
+		if(this.stepIndicator.getIndex() == param.getCurrentTab().getIndex()){
 			transferData = getResponseData(transferData);
 			try{
 				doValidate(param, transferData);

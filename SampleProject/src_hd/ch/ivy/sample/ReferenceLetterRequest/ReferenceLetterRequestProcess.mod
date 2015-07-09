@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Jul 09 17:32:06 ICT 2015]
+[>Created: Thu Jul 09 23:33:13 ICT 2015]
 14E47CF40CA27A1E 3.17 #module
 >Proto >Proto Collection #zClass
 Rs0 ReferenceLetterRequestProcess Big #zClass
@@ -29,7 +29,6 @@ Rs0 @RichDialogProcessStart f10 '' #zField
 Rs0 @RichDialogProcessEnd f11 '' #zField
 Rs0 @RichDialogProcessStart f13 '' #zField
 Rs0 @RichDialogProcessEnd f14 '' #zField
-Rs0 @PushWFArc f15 '' #zField
 Rs0 @RichDialogProcessStart f16 '' #zField
 Rs0 @RichDialogProcessStart f19 '' #zField
 Rs0 @RichDialogProcessEnd f20 '' #zField
@@ -39,11 +38,18 @@ Rs0 @GridStep f24 '' #zField
 Rs0 @PushWFArc f25 '' #zField
 Rs0 @PushWFArc f12 '' #zField
 Rs0 @GridStep f26 '' #zField
-Rs0 @PushWFArc f27 '' #zField
 Rs0 @PushWFArc f18 '' #zField
 Rs0 @GridStep f17 '' #zField
 Rs0 @PushWFArc f28 '' #zField
 Rs0 @PushWFArc f23 '' #zField
+Rs0 @GridStep f29 '' #zField
+Rs0 @PushWFArc f30 '' #zField
+Rs0 @PushWFArc f27 '' #zField
+Rs0 @GridStep f31 '' #zField
+Rs0 @PushWFArc f32 '' #zField
+Rs0 @GridStep f33 '' #zField
+Rs0 @PushWFArc f34 '' #zField
+Rs0 @PushWFArc f15 '' #zField
 >Proto Rs0 Rs0 ReferenceLetterRequestProcess #zField
 Rs0 f0 guid 14E47CF40FE8C4EA #txt
 Rs0 f0 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
@@ -177,9 +183,8 @@ Rs0 f13 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 Rs0 f13 1187 99 26 26 -29 12 #rect
 Rs0 f13 @|RichDialogProcessStartIcon #fIcon
 Rs0 f14 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
-Rs0 f14 1187 227 26 26 0 12 #rect
+Rs0 f14 1187 587 26 26 0 12 #rect
 Rs0 f14 @|RichDialogProcessEndIcon #fIcon
-Rs0 f15 1200 125 1200 227 #arcP
 Rs0 f16 guid 14E5220BF803CD49 #txt
 Rs0 f16 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f16 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
@@ -235,7 +240,7 @@ Rs0 f24 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestD
 ' #txt
 Rs0 f24 actionTable 'out=in;
 ' #txt
-Rs0 f24 actionCode 'in.activeTabIndex = in.transferData.getTabInfo().getNewTab().index;
+Rs0 f24 actionCode 'in.activeTabIndex = in.transferData.getNewTab().index;
 in.activeTabIndexTemporary = in.activeTabIndex;' #txt
 Rs0 f24 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f24 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -257,7 +262,7 @@ Rs0 f26 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestD
 ' #txt
 Rs0 f26 actionTable 'out=in;
 ' #txt
-Rs0 f26 actionCode 'in.transferData = in.referenceNavigator.back(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex));' #txt
+Rs0 f26 actionCode 'in.transferData = in.referenceNavigator.back(in.navigatorParam);' #txt
 Rs0 f26 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f26 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -270,8 +275,6 @@ Rs0 f26 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 ' #txt
 Rs0 f26 872 330 112 44 -20 -8 #rect
 Rs0 f26 @|StepIcon #fIcon
-Rs0 f27 expr out #txt
-Rs0 f27 928 109 928 330 #arcP
 Rs0 f18 expr out #txt
 Rs0 f18 928 374 824 512 #arcP
 Rs0 f18 1 928 512 #addKink
@@ -289,7 +292,7 @@ in.navigatorParam = NavigatorParamBuilder.createBuilder()
 																			.setOnLoadMainStep(false)
 																			.setCheckSpecialCondition(false)
 																			.setOnLoadSubStep(false)
-																			.setCurrentTabIndicator(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
+																			.setCurrentTab(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
 																			.setXrflBean(ReferenceLetterUtil.getReferenceLetterRequestBean())
 																			.createParam();' #txt
 Rs0 f17 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
@@ -308,6 +311,90 @@ Rs0 f28 expr out #txt
 Rs0 f28 768 109 768 170 #arcP
 Rs0 f23 expr out #txt
 Rs0 f23 768 214 768 330 #arcP
+Rs0 f29 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
+' #txt
+Rs0 f29 actionTable 'out=in;
+' #txt
+Rs0 f29 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
+
+import ch.ivy.sample.enums.EntryType;
+import ch.ivy.sample.bean.NavigatorParamVO.NavigatorParamBuilder;
+
+in.navigatorParam = NavigatorParamBuilder.createBuilder()
+																			.setForEntry(EntryType.OLD_ENTRY)
+																			.setOnLoadMainStep(false)
+																			.setCheckSpecialCondition(false)
+																			.setOnLoadSubStep(false)
+																			.setCurrentTab(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
+																			.setXrflBean(ReferenceLetterUtil.getReferenceLetterRequestBean())
+																			.createParam();' #txt
+Rs0 f29 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
+Rs0 f29 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>build params</name>
+        <nameStyle>12,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Rs0 f29 872 170 112 44 -36 -8 #rect
+Rs0 f29 @|StepIcon #fIcon
+Rs0 f30 expr out #txt
+Rs0 f30 928 109 928 170 #arcP
+Rs0 f27 expr out #txt
+Rs0 f27 928 214 928 330 #arcP
+Rs0 f31 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
+' #txt
+Rs0 f31 actionTable 'out=in;
+' #txt
+Rs0 f31 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
+import ch.ivy.sample.enums.EntryType;
+import ch.ivy.sample.bean.NavigatorParamVO.NavigatorParamBuilder;
+
+NavigatorParamBuilder.createBuilder()
+																						.setForEntry(EntryType.NEW_ENTRY)
+																						.setOnLoadMainStep(false)
+																						.setCheckSpecialCondition(false)
+																						.setOnLoadSubStep(false)
+																						.setStatusOnStep(true)
+																						.setXrflBean(ReferenceLetterUtil.getReferenceLetterRequestBean())
+																						.createParam();' #txt
+Rs0 f31 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
+Rs0 f31 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>build param</name>
+        <nameStyle>11,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Rs0 f31 1144 186 112 44 -33 -8 #rect
+Rs0 f31 @|StepIcon #fIcon
+Rs0 f32 expr out #txt
+Rs0 f32 1200 125 1200 186 #arcP
+Rs0 f33 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
+' #txt
+Rs0 f33 actionTable 'out=in;
+' #txt
+Rs0 f33 actionCode 'in.referenceNavigator.validate(in.navigatorParam, in.transferData);' #txt
+Rs0 f33 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
+Rs0 f33 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>validate</name>
+        <nameStyle>8,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Rs0 f33 1144 330 112 44 -21 -8 #rect
+Rs0 f33 @|StepIcon #fIcon
+Rs0 f34 expr out #txt
+Rs0 f34 1200 230 1200 330 #arcP
+Rs0 f15 expr out #txt
+Rs0 f15 1200 374 1200 587 #arcP
 >Proto Rs0 .type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 >Proto Rs0 .processKind HTML_DIALOG #txt
 >Proto Rs0 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -337,19 +424,25 @@ Rs0 f3 mainOut f9 tail #connect
 Rs0 f9 head f8 mainIn #connect
 Rs0 f8 mainOut f5 tail #connect
 Rs0 f5 head f4 mainIn #connect
-Rs0 f13 mainOut f15 tail #connect
-Rs0 f15 head f14 mainIn #connect
 Rs0 f19 mainOut f21 tail #connect
 Rs0 f21 head f20 mainIn #connect
 Rs0 f22 mainOut f25 tail #connect
 Rs0 f25 head f24 mainIn #connect
 Rs0 f24 mainOut f12 tail #connect
 Rs0 f12 head f11 mainIn #connect
-Rs0 f16 mainOut f27 tail #connect
-Rs0 f27 head f26 mainIn #connect
 Rs0 f26 mainOut f18 tail #connect
 Rs0 f18 head f24 mainIn #connect
 Rs0 f10 mainOut f28 tail #connect
 Rs0 f28 head f17 mainIn #connect
 Rs0 f17 mainOut f23 tail #connect
 Rs0 f23 head f22 mainIn #connect
+Rs0 f16 mainOut f30 tail #connect
+Rs0 f30 head f29 mainIn #connect
+Rs0 f29 mainOut f27 tail #connect
+Rs0 f27 head f26 mainIn #connect
+Rs0 f13 mainOut f32 tail #connect
+Rs0 f32 head f31 mainIn #connect
+Rs0 f31 mainOut f34 tail #connect
+Rs0 f34 head f33 mainIn #connect
+Rs0 f33 mainOut f15 tail #connect
+Rs0 f15 head f14 mainIn #connect

@@ -17,7 +17,8 @@ public final class NavigatorParamVO {
 	private boolean isOnLoadSubStep;
 	private MainPageTab callerStepIndicator;
 	private boolean hasSetStatusOnStep;
-	private MainTabInfo tabInfo;
+	private MainPageTab currentTab;
+	private MainPageTab oldTab;
 	private ReferenceLetterRequestBean xrflBean;
 	private RequestContent requestContext;
 	private Action action;
@@ -74,14 +75,22 @@ public final class NavigatorParamVO {
 	public void setHasSetStatusOnStep(boolean hasSetStatusOnStep) {
 		this.hasSetStatusOnStep = hasSetStatusOnStep;
 	}
-
-	public MainTabInfo getTabInfo() {
-		return tabInfo;
+	public MainPageTab getOldTab() {
+		return oldTab;
 	}
 
-	public void setTabInfo(MainTabInfo tabInfo) {
-		this.tabInfo = tabInfo;
+	public void setOldTab(MainPageTab oldTab) {
+		this.oldTab = oldTab;
 	}
+
+	public MainPageTab getCurrentTab() {
+		return currentTab;
+	}
+
+	public void setCurrentTab(MainPageTab currentTab) {
+		this.currentTab = currentTab;
+	}
+
 	public ReferenceLetterRequestBean getXrflBean() {
 		return xrflBean;
 	}
@@ -114,7 +123,8 @@ public final class NavigatorParamVO {
 		private boolean isOnLoadSubStep;
 		private MainPageTab callerStepIndicator;
 		private boolean hasSetStatusOnStep;
-		private MainTabInfo tabInfo;
+		private MainPageTab currentTab;
+		private MainPageTab oldTab;
 		private ReferenceLetterRequestBean xrflBean;
 		private RequestContent requestContext;
 		private Action action;
@@ -125,7 +135,8 @@ public final class NavigatorParamVO {
 			this.forEntry = EntryType.UNKNOWN;
 			this.callerStepIndicator = MainPageTab.UNKNOWN;
 			this.hasSetStatusOnStep = true;
-			this.tabInfo = new MainTabInfo();
+			this.oldTab = MainPageTab.UNKNOWN;
+			this.currentTab = MainPageTab.UNKNOWN;
 		}
 
 		public static NavigatorParamBuilder createBuilder() {
@@ -137,8 +148,8 @@ public final class NavigatorParamVO {
 			return this;
 		}
 
-		public NavigatorParamBuilder setTabInfo(MainTabInfo tabInfo) {
-			this.tabInfo = tabInfo;
+		public NavigatorParamBuilder setTabInfo(MainPageTab tabInfo) {
+			this.currentTab = tabInfo;
 			return this;
 		}
 
@@ -189,15 +200,15 @@ public final class NavigatorParamVO {
 			return this;
 		}
 		
-		public NavigatorParamBuilder setCurrentTabIndicator(
+		public NavigatorParamBuilder setCurrentTab(
 				MainPageTab indicator) {
-			this.tabInfo.setCurrentTab(indicator);
+			this.currentTab = indicator;
 			return this;
 		}
 		
-		public NavigatorParamBuilder setOldTabIndicator(
+		public NavigatorParamBuilder setOldTab(
 				MainPageTab indicator) {
-			this.tabInfo.setOldTab(indicator);
+			this.oldTab = indicator;
 			return this;
 		}
 
@@ -211,7 +222,8 @@ public final class NavigatorParamVO {
 			item.setHasSetStatusOnStep(this.hasSetStatusOnStep);
 			item.setAction(this.action);
 			item.setRequestContext(this.requestContext);
-			item.setTabInfo(this.tabInfo);
+			item.setCurrentTab(this.currentTab);
+			item.setOldTab(this.oldTab);
 			item.setXrflBean(this.xrflBean);
 			return item;
 		}

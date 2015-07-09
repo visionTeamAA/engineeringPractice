@@ -28,7 +28,7 @@ public class NavigatorManager {
 		navigator.performNext(param, response);
 		if(isNewTabIndexValid(response) && response.getIsDataSaved()){
 			param.setAction(Action.NEXT);
-			processNewStepData(tab, response, bean, Action.NEXT);
+			processNewStepData(param , response);
 		}
 		return response;
 		
@@ -36,47 +36,35 @@ public class NavigatorManager {
 
 	
 	
-	public TransferData back(MainPageTab tab) throws BusinessException{
+	public TransferData back(NavigatorParamVO param) throws BusinessException{
 		TransferData response = new TransferData();
-		ReferenceLetterRequestBean bean =  ReferenceLetterUtil.getReferenceLetterRequestBean();
-		response.getTabInfo().setOldTab(tab);
-		if(response.isHasException()){
-			return response;
-		}
-		navigator.performValidate(tab, bean, response, NavigatorParamBuilder.createBuilder()
-																			.setForEntry(EntryType.OLD_ENTRY)
-																			.setOnLoadMainStep(false)
-																			.setCheckSpecialCondition(false)
-																			.setOnLoadSubStep(false)
-																			.createParam()); 
-		navigator.performBack(tab, bean, response);
+
+		navigator.performValidate(param, response); 
+		navigator.performBack(param, response);
 		if(isNewTabIndexValid(response) && response.getIsDataSaved()){
-			processNewStepData(tab, response, bean, Action.BACK);
+			param.setAction(Action.BACK);
+			processNewStepData(param, response);
 		}
 		
 		return response;
 	}
 	
-	private void loadAndValidateNewStepIfNeeded(MainPageTab oldTab,
-			TransferData response, ReferenceLetterRequestBean bean,
-			Action action) throws BusinessException {
+	private void loadAndValidateNewStepIfNeeded(NavigatorParamVO param, TransferData response) throws BusinessException {
 		if(response.isCanChangeTab()){
-			navigator.performLoad(response.getTabInfo().getNewTab(), bean , response, action);
-			navigator.performValidate(response.getTabInfo().getNewTab(), bean, response,NavigatorParamBuilder.createBuilder()
-																										.setForEntry(EntryType.NEW_ENTRY)
-																										.setOnLoadMainStep(true)
-																										.setCheckSpecialCondition(true)
-																										.setOnLoadSubStep(true)
-																										.createParam());
+			navigator.performLoad(param, response);
+			param.setForEntry(EntryType.NEW_ENTRY);
+			param.setOnLoadMainStep(true);
+			param.setCheckSpecialCondition(true);
+			param.setOnLoadSubStep(true);
+			navigator.performValidate(param, response);
 		} 
 	}
-	private void processNewStepData(MainPageTab oldTab, TransferData response,
-			ReferenceLetterRequestBean bean, Action action) throws BusinessException {
-		checkMovingCondition(response.getTabInfo().getNewTab(), response);
-		loadAndValidateNewStepIfNeeded(oldTab, response, bean, action);
+	private void processNewStepData(NavigatorParamVO param, TransferData response) throws BusinessException {
+		checkMovingCondition(response);
+		loadAndValidateNewStepIfNeeded(param, response);
 	}
 	
-	public TransferData switchTab(MainPageTab oldTab, MainPageTab newTab) throws BusinessException{
+	/*public TransferData switchTab(MainPageTab oldTab, MainPageTab newTab) throws BusinessException{
 		ReferenceLetterRequestBean bean =  ReferenceLetterUtil.getReferenceLetterRequestBean();
 		TransferData response = new TransferData();
 		navigator.performValidate(oldTab, bean, response, NavigatorParamBuilder.createBuilder()
@@ -92,11 +80,11 @@ public class NavigatorManager {
 		}
 		
 		return response;
-	}
+	}*/
 	
-	public TransferData switchTab(MainPageTab currentTab) throws BusinessException{
+	/*public TransferData switchTab(MainPageTab currentTab) throws BusinessException{
 		return switchTab(currentTab, currentTab);
-	}
+	}*/
 	
 	private EntryType getEntryTypeByTabIndex(MainPageTab oldTab, MainPageTab newTab) {
 		EntryType forType = EntryType.NEW_ENTRY;
@@ -106,7 +94,7 @@ public class NavigatorManager {
 		return forType;
 	}
 	
-	public void processNewStepDataWhenSwitchTab(MainPageTab oldTab,
+	/*public void processNewStepDataWhenSwitchTab(MainPageTab oldTab,
 			MainPageTab newTab, ReferenceLetterRequestBean bean,
 			TransferData response) throws BusinessException {
 		checkMovingCondition(newTab, response);
@@ -122,22 +110,15 @@ public class NavigatorManager {
 			
 		}
 		
-	}
+	}*/
 
 	
-	public TransferData validate(MainPageTab tab, TransferData response, boolean checkSpecCond) throws BusinessException{
-		if(response == null) {
-			response = new TransferData();
+	public TransferData validate(NavigatorParamVO param, TransferData transferData) throws BusinessException{
+		if(transferData == null) {
+			transferData = new TransferData();
 		}
-		ReferenceLetterRequestBean bean =  ReferenceLetterUtil.getReferenceLetterRequestBean();
-		response = navigator.performValidate(tab, bean, response,  NavigatorParamBuilder.createBuilder()
-																						.setForEntry(EntryType.NEW_ENTRY)
-																						.setOnLoadMainStep(false)
-																						.setCheckSpecialCondition(checkSpecCond)
-																						.setOnLoadSubStep(false)
-																						.setStatusOnStep(response.isHasSetStatusOnStep())
-																						.createParam());
-		return response;
+		transferData = navigator.performValidate(param, transferData);
+		return transferData;
 	}
 	
 	public void setCaption(MainPageTab tab){
@@ -152,15 +133,15 @@ public class NavigatorManager {
 	
 	
 	private boolean isNewTabIndexValid(TransferData response) {
-		return response.getTabInfo().getNewTab().getIndex() != MainPageTab.UNKNOWN.getIndex();
+		return response.getNewTab().getIndex() != MainPageTab.UNKNOWN.getIndex();
 	}
 	
 	
-	private TransferData checkMovingCondition(MainPageTab newTab, TransferData response) throws BusinessException {
+	private TransferData checkMovingCondition(TransferData response) throws BusinessException {
 		if(response == null){
 			response = new TransferData();
 		}
-		switch (newTab) {
+		switch (response.getNewTab()) {
 			case EMPLOYEE_DETAIL:
 			case DOCUMENT_TYPE:
 				response.setCanChangeTab(true);
