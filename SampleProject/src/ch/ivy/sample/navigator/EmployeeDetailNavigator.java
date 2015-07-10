@@ -1,13 +1,17 @@
 package ch.ivy.sample.navigator;
 
+import org.apache.commons.lang3.StringUtils;
+
 import ch.ivy.sample.bean.BusinessException;
+import ch.ivy.sample.bean.ConstantVariable;
 import ch.ivy.sample.bean.NavigatorParamVO;
 import ch.ivy.sample.bean.ReferenceLetterRequestBean;
+import ch.ivy.sample.bean.RequestEmployeeDetailStep;
 import ch.ivy.sample.bean.TransferData;
 import ch.ivy.sample.bean.ValidationMessages;
-import ch.ivy.sample.enums.Action;
 import ch.ivy.sample.enums.MainPageTab;
 import ch.ivy.sample.enums.StepStatus;
+import ch.ivy.sample.util.CommonUtils;
 import ch.ivyteam.ivy.environment.Ivy;
 
 public class EmployeeDetailNavigator extends AbstractReferenceNavigator {
@@ -44,6 +48,14 @@ public class EmployeeDetailNavigator extends AbstractReferenceNavigator {
 			throws BusinessException {
 		Ivy.log().info("doValidate:" + this.getClass().getName());
 		
+		RequestEmployeeDetailStep employeeDetailStep = param.getXrflBean().getEmployeeDetailStep();
+		if(StringUtils.isEmpty(employeeDetailStep.getFirstName())) {
+			transferData.getEmpDetailValidationResult().addMessage(CommonUtils.getFullId(param.getFacesContext(), ConstantVariable.FIRSTNAME_INPUT), message.getMessage(ConstantVariable.MSG_REQUIRE_MESSAGE));
+		}
+		
+		if(StringUtils.isEmpty(employeeDetailStep.getLastName())) {
+			transferData.getEmpDetailValidationResult().addMessage(CommonUtils.getFullId(param.getFacesContext(), ConstantVariable.LASTNAME_INPUT), message.getMessage(ConstantVariable.MSG_REQUIRE_MESSAGE));
+		}
 	}
 
 	@Override

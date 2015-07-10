@@ -1,6 +1,8 @@
 package ch.ivy.sample.bean;
 
-import org.apache.http.protocol.RequestContent;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.context.RequestContext;
 
 import ch.ivy.sample.enums.Action;
 import ch.ivy.sample.enums.EntryType;
@@ -20,7 +22,8 @@ public final class NavigatorParamVO {
 	private MainPageTab currentTab;
 	private MainPageTab oldTab;
 	private ReferenceLetterRequestBean xrflBean;
-	private RequestContent requestContext;
+	private RequestContext requestContext;
+	private FacesContext facesContext;
 	private Action action;
 	private NavigatorParamVO(boolean isOnLoadMainStep,
 			boolean checkSpecialCondition) {
@@ -99,11 +102,11 @@ public final class NavigatorParamVO {
 		this.xrflBean = xrflBean;
 	}
 
-	public RequestContent getRequestContext() {
+	public RequestContext getRequestContext() {
 		return requestContext;
 	}
 
-	public void setRequestContext(RequestContent requestContext) {
+	public void setRequestContext(RequestContext requestContext) {
 		this.requestContext = requestContext;
 	}
 
@@ -126,7 +129,8 @@ public final class NavigatorParamVO {
 		private MainPageTab currentTab;
 		private MainPageTab oldTab;
 		private ReferenceLetterRequestBean xrflBean;
-		private RequestContent requestContext;
+		private RequestContext requestContext;
+		private FacesContext facesContext;
 		private Action action;
 		
 		private NavigatorParamBuilder() {
@@ -158,7 +162,7 @@ public final class NavigatorParamVO {
 			return this;
 		}
 
-		public NavigatorParamBuilder setRequestContext(RequestContent requestContext) {
+		public NavigatorParamBuilder setRequestContext(RequestContext requestContext) {
 			this.requestContext = requestContext;
 			return this;
 		}
@@ -211,6 +215,10 @@ public final class NavigatorParamVO {
 			this.oldTab = indicator;
 			return this;
 		}
+		
+		public void setFacesContext(FacesContext facesContext) {
+			this.facesContext = facesContext;
+		}
 
 
 		public NavigatorParamVO createParam() {
@@ -225,9 +233,19 @@ public final class NavigatorParamVO {
 			item.setCurrentTab(this.currentTab);
 			item.setOldTab(this.oldTab);
 			item.setXrflBean(this.xrflBean);
+			item.setFacesContext(this.facesContext);
 			return item;
 		}
 
+	}
+
+
+	public FacesContext getFacesContext() {
+		return facesContext;
+	}
+
+	public void setFacesContext(FacesContext facesContext) {
+		this.facesContext = facesContext;
 	}
 	
 }

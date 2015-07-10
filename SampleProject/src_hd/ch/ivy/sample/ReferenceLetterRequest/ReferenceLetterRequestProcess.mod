@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Thu Jul 09 23:46:29 ICT 2015]
+[>Created: Fri Jul 10 16:16:16 ICT 2015]
 14E47CF40CA27A1E 3.17 #module
 >Proto >Proto Collection #zClass
 Rs0 ReferenceLetterRequestProcess Big #zClass
@@ -43,14 +43,14 @@ Rs0 @PushWFArc f30 '' #zField
 Rs0 @PushWFArc f27 '' #zField
 Rs0 @GridStep f31 '' #zField
 Rs0 @PushWFArc f32 '' #zField
-Rs0 @GridStep f33 '' #zField
-Rs0 @PushWFArc f34 '' #zField
-Rs0 @PushWFArc f15 '' #zField
 Rs0 @GridStep f4 '' #zField
 Rs0 @PushWFArc f5 '' #zField
 Rs0 @GridStep f9 '' #zField
 Rs0 @PushWFArc f35 '' #zField
 Rs0 @PushWFArc f8 '' #zField
+Rs0 @ProgramInterface f15 '' #zField
+Rs0 @PushWFArc f33 '' #zField
+Rs0 @PushWFArc f34 '' #zField
 >Proto Rs0 Rs0 ReferenceLetterRequestProcess #zField
 Rs0 f0 guid 14E47CF40FE8C4EA #txt
 Rs0 f0 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
@@ -95,11 +95,12 @@ Rs0 f6 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestDa
 ' #txt
 Rs0 f6 actionTable 'out=in;
 ' #txt
-Rs0 f6 actionCode 'import ch.ivy.sample.navigator.NavigatorManager;
+Rs0 f6 actionCode 'import ch.ivy.sample.bean.TransferData;
+import ch.ivy.sample.navigator.NavigatorManager;
 in.activeTabIndex = 0;
 in.activeTabIndexTemporary = 0;
 in.referenceNavigator = NavigatorManager.createInstance();
-' #txt
+in.transferData =  new TransferData();' #txt
 Rs0 f6 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f6 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -150,7 +151,7 @@ Rs0 f13 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 Rs0 f13 1187 99 26 26 -29 12 #rect
 Rs0 f13 @|RichDialogProcessStartIcon #fIcon
 Rs0 f14 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
-Rs0 f14 1187 587 26 26 0 12 #rect
+Rs0 f14 1187 467 26 26 0 12 #rect
 Rs0 f14 @|RichDialogProcessEndIcon #fIcon
 Rs0 f16 guid 14E5220BF803CD49 #txt
 Rs0 f16 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
@@ -315,7 +316,9 @@ Rs0 f31 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestD
 ' #txt
 Rs0 f31 actionTable 'out=in;
 ' #txt
-Rs0 f31 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
+Rs0 f31 actionCode 'import org.primefaces.context.RequestContext;
+import javax.faces.context.FacesContext;
+import ch.ivy.sample.util.ReferenceLetterUtil;
 import ch.ivy.sample.enums.EntryType;
 import ch.ivy.sample.bean.NavigatorParamVO.NavigatorParamBuilder;
 
@@ -325,8 +328,10 @@ in.navigatorParam=NavigatorParamBuilder.createBuilder()
 																						.setCheckSpecialCondition(false)
 																						.setOnLoadSubStep(false)
 																						.setStatusOnStep(true)
-																			.setCurrentTab(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
+																						.setCurrentTab(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
 																						.setXrflBean(ReferenceLetterUtil.getReferenceLetterRequestBean())
+																						.setFacesContext(FacesContext.getCurrentInstance())
+																						.setRequestContext(RequestContext.getCurrentInstance())
 																						.createParam();' #txt
 Rs0 f31 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f31 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -342,27 +347,6 @@ Rs0 f31 1144 186 112 44 -33 -8 #rect
 Rs0 f31 @|StepIcon #fIcon
 Rs0 f32 expr out #txt
 Rs0 f32 1200 125 1200 186 #arcP
-Rs0 f33 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
-' #txt
-Rs0 f33 actionTable 'out=in;
-' #txt
-Rs0 f33 actionCode 'in.referenceNavigator.validate(in.navigatorParam, in.transferData);' #txt
-Rs0 f33 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
-Rs0 f33 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<elementInfo>
-    <language>
-        <name>validate</name>
-        <nameStyle>8,7
-</nameStyle>
-    </language>
-</elementInfo>
-' #txt
-Rs0 f33 1144 330 112 44 -21 -8 #rect
-Rs0 f33 @|StepIcon #fIcon
-Rs0 f34 expr out #txt
-Rs0 f34 1200 230 1200 330 #arcP
-Rs0 f15 expr out #txt
-Rs0 f15 1200 374 1200 587 #arcP
 Rs0 f4 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
 ' #txt
 Rs0 f4 actionTable 'out=in;
@@ -406,6 +390,27 @@ Rs0 f8 expr out #txt
 Rs0 f8 600 374 712 512 #arcP
 Rs0 f8 1 600 512 #addKink
 Rs0 f8 1 0.09276263195697321 0 0 #arcLabel
+Rs0 f15 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
+Rs0 f15 outerBean "ch.ivy.sample.ReferenceLetterRequest.resources.ValidationProcess" #txt
+Rs0 f15 timeout 0 #txt
+Rs0 f15 beanConfig "" #txt
+Rs0 f15 exceptionHandler '>> Ignore Exception' #txt
+Rs0 f15 timeoutExceptionHandler '>> Ignore Exception' #txt
+Rs0 f15 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>validate</name>
+        <nameStyle>8
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Rs0 f15 1144 330 112 44 -21 -8 #rect
+Rs0 f15 @|ProgramInterfaceIcon #fIcon
+Rs0 f33 expr out #txt
+Rs0 f33 1200 230 1200 330 #arcP
+Rs0 f34 expr out #txt
+Rs0 f34 1200 374 1200 467 #arcP
 >Proto Rs0 .type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 >Proto Rs0 .processKind HTML_DIALOG #txt
 >Proto Rs0 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -449,13 +454,13 @@ Rs0 f29 mainOut f27 tail #connect
 Rs0 f27 head f26 mainIn #connect
 Rs0 f13 mainOut f32 tail #connect
 Rs0 f32 head f31 mainIn #connect
-Rs0 f31 mainOut f34 tail #connect
-Rs0 f34 head f33 mainIn #connect
-Rs0 f33 mainOut f15 tail #connect
-Rs0 f15 head f14 mainIn #connect
 Rs0 f3 mainOut f5 tail #connect
 Rs0 f5 head f4 mainIn #connect
 Rs0 f4 mainOut f35 tail #connect
 Rs0 f35 head f9 mainIn #connect
 Rs0 f9 mainOut f8 tail #connect
 Rs0 f8 head f24 mainIn #connect
+Rs0 f31 mainOut f33 tail #connect
+Rs0 f33 head f15 mainIn #connect
+Rs0 f15 mainOut f34 tail #connect
+Rs0 f34 head f14 mainIn #connect

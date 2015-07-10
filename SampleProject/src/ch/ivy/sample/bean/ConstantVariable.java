@@ -45,7 +45,7 @@ public class ConstantVariable {
 	
 	public static final String MSG_ONE_TASK_TEXT_MUST_BE_DEFINED = "/ch/soreco/standard/xrfl/web/administration/functionsTab/msgOneTaskTextMustBeSet";
 
-	public static final String MSG_REQUIRE_MESSAGE = "/ch/soreco/standard/xrfl/common/message/requiredField";
+	public static final String MSG_REQUIRE_MESSAGE = "/system/validation/mandatoryerrormessage";
 	public static final String MSG_UNIQUE_CODE = "/ch/soreco/standard/xrfl/web/administration/functionsTab/msgUniqueCode";
 
 	public static final String MSG_MANDATORY_TEMPLATE = "/ch/soreco/standard/xrfl/common/message/msgMandatoryTemplate";
@@ -138,4 +138,7 @@ public class ConstantVariable {
 	
 	public static final String BTN_SAVE = "/ch/soreco/standard/xrfl/common/button/btnSave";
 	public static final String BTN_ADD = "/ch/soreco/standard/xrfl/common/button/btnAdd";
+	
+	public static final String FIRSTNAME_INPUT = "firstname";
+	public static final String LASTNAME_INPUT = "lastname";
 }

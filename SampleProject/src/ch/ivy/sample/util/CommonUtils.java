@@ -26,8 +26,7 @@ public final class CommonUtils {
 		context.addCallbackParam(name, value);
 	}
 
-	public static String getFullId(String componentId) {
-		FacesContext context = FacesContext.getCurrentInstance();
+	public static String getFullId(FacesContext context, String componentId) {
 		UIViewRoot root = context.getViewRoot();
 		UIComponent c = findComponent(root, componentId);
 		return c.getClientId(context);
@@ -47,12 +46,8 @@ public final class CommonUtils {
 		return null;
 	}
 
-	public static void sendErrorMessage(String idComponent, String message) {
-		FacesContext.getCurrentInstance()
-				.addMessage(
-						CommonUtils.getFullId(idComponent),
-						new FacesMessage(FacesMessage.SEVERITY_ERROR, ERROR,
-								message));
+	public static void sendErrorMessage(FacesContext context, String idComponent, String message) {
+		context.addMessage(CommonUtils.getFullId(context, idComponent), new FacesMessage(FacesMessage.SEVERITY_ERROR, ERROR, message));
 	}
 
 }

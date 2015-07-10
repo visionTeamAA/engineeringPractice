@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<partial-response>
+	<changes>
+		<update id="xrflMainPageForm"><![CDATA
+[
+			
+			
+			
+			
+			
+			<form id="xrflMainPageForm" name="xrflMainPageForm" method="post" action="/ivy/faces/instances/14E77076AA7DF1FD/ReferenceLetterRequest.xhtml" enctype="application/x-www-form-urlencoded">
+				<div id="xrflMainPageForm
+:xrflMainTabPanel" class="ui-outputpanel ui-widget xrfl-main-page-panel">
+					<div id="xrflMainPageForm:xrflMainTabView" class="ui-tabs ui-widget ui-widget-content ui-corner-all ui-hidden-container ui-tabs-top xrfl-main-tabView" data-widget="xrflMainTabViewVar">
+						<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header
+ ui-corner-all" role="tablist">
+							<li class="ui-state-default ui-tabs-selected ui-state-active ui-corner-top
+ xrfl-ui-steps" role="tab" aria-expanded="true">
+								<a href="#xrflMainPageForm:xrflMainTabView:xrflEmployeeDetailTab">
+									Employee
+								</a>
+							</li>
+							<li class="ui-state-default ui-corner-top xrfl-ui-steps" role="tab" aria-expanded="false">
+								<a href="#xrflMainPageForm:xrflMainTabView:xrflDocumentTypeTab">Document type</a>
+							</li>
+						</ul>
+						<div class="ui-tabs-panels">
+							<div id="xrflMainPageForm:xrflMainTabView:xrflEmployeeDetailTab" class="ui-tabs-panel
+ ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="false">
+								<span id="xrflMainPageForm:xrflMainTabView
+:xrflRequestEmpDetail" class="ui-outputpanel ui-widget">
+									<div id="xrflMainPageForm:xrflMainTabView:j_id_j" class="ui-outputpanel ui-widget">
+										<table id="xrflMainPageForm:xrflMainTabView:j_id_k" class="ui-panelgrid
+ ui-widget panelGroup" role="grid">
+											<tbody>
+												<tr class="ui-widget-content" role="row">
+													<td role="gridcell" class="ui-panelgrid-cell">
+														<label id="xrflMainPageForm:xrflMainTabView:j_id_n" class="ui-outputlabel
+ ui-widget" style="margin-right:20px">Firstname:
+														</label>
+														<input id="xrflMainPageForm:xrflMainTabView:firstname" name="xrflMainPageForm:xrflMainTabView:firstname" type="text" value="asdsagd" class="ui-inputfield ui-inputtext
+ ui-widget ui-state-default ui-corner-all" />
+														<script id="xrflMainPageForm:xrflMainTabView:firstname_s" type="text/javascript">PrimeFaces.cw("InputText","widget_xrflMainPageForm_xrflMainTabView_firstname"
+															,{id:"xrflMainPageForm:xrflMainTabView:firstname",widgetVar:"widget_xrflMainPageForm_xrflMainTabView_firstname"
+															});
+														</script>
+														<div id="xrflMainPageForm:xrflMainTabView:firstname_error" aria-live="polite" class="ui-message"></div>
+													</td>
+													<td role="gridcell" class="ui-panelgrid-cell">
+														<label id="xrflMainPageForm:xrflMainTabView
+:j_id_t" class="ui-outputlabel ui-widget" style="margin-right:20px">Lastname</label>
+														<input id="xrflMainPageForm
+:xrflMainTabView:lastname" name="xrflMainPageForm:xrflMainTabView:lastname" type="text" value="" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" />
+														<script id="xrflMainPageForm
+:xrflMainTabView:lastname_s" type="text/javascript">PrimeFaces.cw("InputText","widget_xrflMainPageForm_xrflMainTabView_lastname"
+															,{id:"xrflMainPageForm:xrflMainTabView:lastname",widgetVar:"widget_xrflMainPageForm_xrflMainTabView_lastname"
+															});
+														</script>
+														<div id="xrflMainPageForm:xrflMainTabView:lastname_error" aria-live="polite" class="ui-message"></div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</span>
+							</div>
+							<div id="xrflMainPageForm:xrflMainTabView:xrflDocumentTypeTab" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-helper-hidden" role="tabpanel" aria-hidden="true">
+								<span id="xrflMainPageForm:xrflMainTabView:xrflRequestDocumentType" class="ui-outputpanel ui-widget"></span>
+							</div>
+						</div>
+						<input type="hidden" id="xrflMainPageForm:xrflMainTabView_activeIndex" name="xrflMainPageForm
+:xrflMainTabView_activeIndex" value="0" autocomplete="off" />
+					</div>
+					<script id="xrflMainPageForm:xrflMainTabView_s" type="text/javascript">PrimeFaces.cw("TabView","xrflMainTabViewVar",{id:"xrflMainPageForm:xrflMainTabView"
+						,widgetVar:"xrflMainTabViewVar",effectDuration:"normal",scrollable:false,behaviors:{tabChange:function
+						(ext)
+						{PrimeFaces.ab({s:'xrflMainPageForm:xrflMainTabView',e:'tabChange',p:'xrflMainPageForm',u:'xrflMainPageForm'
+						,ps:true,onco:function(xhr,status,args){buildMainNavigator();
+						onCompleteValidation(xhr, status, args
+						);;}},ext);}}});
+					</script>
+				</div>
+				<div id="xrflMainPageForm:xrflMainTabButtonPanel" class="ui-outputpanel
+ ui-widget xrflMainTabButtonPanel">
+					<button id="xrflMainPageForm:xrflValidateBtn" name="xrflMainPageForm
+:xrflValidateBtn" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left
+ xrfl-main-page-btn" onclick="PrimeFaces.ab({s:'xrflMainPageForm:xrflValidateBtn',u:'xrflMainPageForm'
+,onco:function(xhr,status,args){buildMainNavigator(); onCompleteValidation(xhr, status, args);;}});return
+ false;" type="submit">
+						<span class="ui-button-icon-left ui-icon ui-c btn-validate"></span>
+						<span class="ui-button-text ui-c">validate</span>
+					</button>
+					<script id="xrflMainPageForm:xrflValidateBtn_s" type="text
+/javascript">PrimeFaces.cw("CommandButton","widget_xrflMainPageForm_xrflValidateBtn",{id:"xrflMainPageForm
+						:xrflValidateBtn",widgetVar:"widget_xrflMainPageForm_xrflValidateBtn"});
+					</script>
+					<button id="xrflMainPageForm
+:xrflNextBtn" name="xrflMainPageForm:xrflNextBtn" class="ui-button ui-widget ui-state-default ui-corner-all
+ ui-button-text-icon-left xrfl-main-page-btn" onclick="PrimeFaces.ab({s:'xrflMainPageForm:xrflNextBtn'
+,u:'xrflMainPageForm:xrflMainTabButtonPanel xrflMainPageForm:xrflMainTabView:xrflRequestEmpDetail xrflMainPageForm
+:xrflMainTabView:xrflRequestDocumentType',onco:function(xhr,status,args){buildMainNavigator();onCompleteValidation
+(xhr, status, args);;}});return false;" type="submit">
+						<span class="ui-button-icon-left ui-icon ui-c btn-forward"></span>
+						<span class="ui-button-text ui-c">next</span>
+					</button>
+					<script id="xrflMainPageForm:xrflNextBtn_s" type="text/javascript">PrimeFaces.cw("CommandButton","widget_xrflMainPageForm_xrflNextBtn",{id:"xrflMainPageForm
+						:xrflNextBtn",widgetVar:"widget_xrflMainPageForm_xrflNextBtn"});
+					</script>
+				</div>
+				<input type="hidden" name="xrflMainPageForm_SUBMIT" value="1" />
+			</form>
+			]]>
+		</update>
+		<update id="j_id__v_0:javax.faces.ViewState
+:1"><![CDATA[MjeyVb5/ctDZkC2Y7w9qdIKeVqL9F+bLxloSui8NmjRXrJSh]]></update>
+		<extension ln="primefaces" type="args">{"isValid":true}</extension>
+	</changes>
+</partial-response>

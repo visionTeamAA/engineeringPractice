@@ -133,8 +133,7 @@ public class ValidationUtils {
 		this.errorString = ConstantVariable.EMPTY_STRING;
 	}
 	
-	public void sendErrorWithJSONSupport(boolean isClearErrorAfterSending) {
-		RequestContext context = RequestContext.getCurrentInstance();
+	public void sendErrorWithJSONSupport(RequestContext context, boolean isClearErrorAfterSending) {
 		if (this.errorString.isEmpty() || CollectionUtils.isEmpty(validationItems)) {
 			context.addCallbackParam(IS_VALID, true);
 		} else {

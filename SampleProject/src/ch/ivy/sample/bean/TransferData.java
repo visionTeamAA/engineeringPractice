@@ -1,5 +1,7 @@
 package ch.ivy.sample.bean;
 
+import org.primefaces.context.RequestContext;
+
 import ch.ivy.sample.enums.MainPageTab;
 import ch.ivy.sample.util.ValidationUtils;
 
@@ -145,22 +147,19 @@ public class TransferData {
 		this.isDataSaved = isDataSaved;
 	}
 
-	public void sendValidationResults(MainPageTab activeTab,
-			boolean isClearError) {
+	public void sendValidationResults(RequestContext requestContext, MainPageTab activeTab, boolean isClearError) {
 		switch (activeTab) {
 		case EMPLOYEE_DETAIL:
-			this.empDetailValidationResult
-					.sendErrorWithJSONSupport(isClearError);
+			this.empDetailValidationResult.sendErrorWithJSONSupport(requestContext, isClearError);
 			break;
 		case DOCUMENT_TYPE:
-			this.docTypeValidationResult.sendErrorWithJSONSupport(isClearError);
+			this.docTypeValidationResult.sendErrorWithJSONSupport(requestContext, isClearError);
 			break;
 		case TASK:
-			this.taskValidationResult.sendErrorWithJSONSupport(isClearError);
+			this.taskValidationResult.sendErrorWithJSONSupport(requestContext, isClearError);
 			break;
 		case COMPETENCE:
-			this.competenceValidationResult
-					.sendErrorWithJSONSupport(isClearError);
+			this.competenceValidationResult.sendErrorWithJSONSupport(requestContext, isClearError);
 		default:
 			break;
 		}
