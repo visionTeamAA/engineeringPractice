@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:library xmlns:ns2="http://www.ivyteam.com/library/" id="vn.axon.vision.sample_project_test" version="1" provider="vision">
+    <description></description>
+    <requiredLibrary id="testingProject">
+        <minimumVersion version="1" inclusive="true"/>
+    </requiredLibrary>
+</ns2:library>
