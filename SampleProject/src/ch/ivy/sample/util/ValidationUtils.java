@@ -148,7 +148,7 @@ public class ValidationUtils {
 			
 			if (isClearErrorAfterSending){
 				this.errorString = ConstantVariable.EMPTY_STRING;
-				this.validationItems = null;
+				this.validationItems.clear();
 			}
 		}
 	}
