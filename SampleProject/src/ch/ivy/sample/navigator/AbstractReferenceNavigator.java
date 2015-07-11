@@ -25,7 +25,7 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 	protected int oldSubStepIndex;
 	protected ValidationMessages message;
 
-	abstract protected ReferenceLetterRequestBean doLoad(NavigatorParamVO param) throws BusinessException;
+	abstract protected void doLoad(NavigatorParamVO param) throws BusinessException;
 	abstract protected void doNext(NavigatorParamVO param) throws BusinessException;
 	abstract protected void doBack(NavigatorParamVO param) throws BusinessException;
 	abstract protected void doValidate(NavigatorParamVO param, TransferData transferData) throws BusinessException;	

@@ -25,10 +25,9 @@ public class EmployeeDetailNavigator extends AbstractReferenceNavigator {
 	}
 
 	@Override
-	protected ReferenceLetterRequestBean doLoad(NavigatorParamVO param)
+	protected void doLoad(NavigatorParamVO param)
 			throws BusinessException {
 		Ivy.log().info("DoLoad:" + this.getClass().getName());
-		return null;
 	}
 
 	@Override

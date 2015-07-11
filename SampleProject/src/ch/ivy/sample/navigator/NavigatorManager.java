@@ -25,6 +25,7 @@ public class NavigatorManager {
 		navigator.performValidate(param.getCurrentTab(), param, transferData); 
 		navigator.performNext(param.getCurrentTab(), param, transferData);
 		if(isNewTabIndexValid(transferData) && transferData.getIsDataSaved()){
+			param.setNewTab(transferData.getNewTab());
 			param.setAction(Action.NEXT);
 			processNewStepData(param , transferData);
 		}
@@ -40,6 +41,7 @@ public class NavigatorManager {
 		navigator.performValidate(param.getCurrentTab() ,param, transferData); 
 		navigator.performBack(param.getCurrentTab() ,param, transferData);
 		if(isNewTabIndexValid(transferData) && transferData.getIsDataSaved()){
+			param.setNewTab(transferData.getNewTab());
 			param.setAction(Action.BACK);
 			processNewStepData(param, transferData);
 		}

@@ -13,6 +13,7 @@ import ch.ivy.sample.bean.ValidationMessages;
 import ch.ivy.sample.enums.Action;
 import ch.ivy.sample.enums.MainPageTab;
 import ch.ivy.sample.enums.StepStatus;
+import ch.ivy.sample.service.AvailableLanguageService;
 import ch.ivyteam.ivy.environment.EnvironmentNotAvailableException;
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.persistence.PersistencyException;
@@ -31,10 +32,11 @@ public class DocumentTypeNavigator extends AbstractReferenceNavigator {
 	}
 
 	@Override
-	protected ReferenceLetterRequestBean doLoad(NavigatorParamVO param)
+	protected void doLoad(NavigatorParamVO param)
 			throws BusinessException {
 		Ivy.log().info("DoLoad:" + this.getClass().getName());
-		return null;
+		AvailableLanguageService service = new AvailableLanguageService();
+		param.getXrflBean().getDocumentTypeStep().setAvailableLanguages(service.getAvailableLanguages());
 	}
 
 	@Override
