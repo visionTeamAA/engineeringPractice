@@ -20,7 +20,7 @@ public final class NavigatorParamVO {
 	private MainPageTab callerStepIndicator;
 	private boolean hasSetStatusOnStep;
 	private MainPageTab currentTab;
-	private MainPageTab oldTab;
+	private MainPageTab newTab;
 	private ReferenceLetterRequestBean xrflBean;
 	private RequestContext requestContext;
 	private FacesContext facesContext;
@@ -78,12 +78,12 @@ public final class NavigatorParamVO {
 	public void setHasSetStatusOnStep(boolean hasSetStatusOnStep) {
 		this.hasSetStatusOnStep = hasSetStatusOnStep;
 	}
-	public MainPageTab getOldTab() {
-		return oldTab;
+	public MainPageTab getNewTab() {
+		return newTab;
 	}
 
-	public void setOldTab(MainPageTab oldTab) {
-		this.oldTab = oldTab;
+	public void setNewTab(MainPageTab newTab) {
+		this.newTab = newTab;
 	}
 
 	public MainPageTab getCurrentTab() {
@@ -127,7 +127,7 @@ public final class NavigatorParamVO {
 		private MainPageTab callerStepIndicator;
 		private boolean hasSetStatusOnStep;
 		private MainPageTab currentTab;
-		private MainPageTab oldTab;
+		private MainPageTab newTab;
 		private ReferenceLetterRequestBean xrflBean;
 		private RequestContext requestContext;
 		private FacesContext facesContext;
@@ -139,7 +139,7 @@ public final class NavigatorParamVO {
 			this.forEntry = EntryType.UNKNOWN;
 			this.callerStepIndicator = MainPageTab.UNKNOWN;
 			this.hasSetStatusOnStep = true;
-			this.oldTab = MainPageTab.UNKNOWN;
+			this.newTab = MainPageTab.UNKNOWN;
 			this.currentTab = MainPageTab.UNKNOWN;
 		}
 
@@ -210,9 +210,9 @@ public final class NavigatorParamVO {
 			return this;
 		}
 		
-		public NavigatorParamBuilder setOldTab(
+		public NavigatorParamBuilder setNewTab(
 				MainPageTab indicator) {
-			this.oldTab = indicator;
+			this.newTab = indicator;
 			return this;
 		}
 		
@@ -231,7 +231,7 @@ public final class NavigatorParamVO {
 			item.setAction(this.action);
 			item.setRequestContext(this.requestContext);
 			item.setCurrentTab(this.currentTab);
-			item.setOldTab(this.oldTab);
+			item.setNewTab(this.newTab);
 			item.setXrflBean(this.xrflBean);
 			item.setFacesContext(this.facesContext);
 			return item;

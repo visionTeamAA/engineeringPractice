@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Fri Jul 10 16:16:16 ICT 2015]
+[>Created: Sat Jul 11 17:37:19 ICT 2015]
 14E47CF40CA27A1E 3.17 #module
 >Proto >Proto Collection #zClass
 Rs0 ReferenceLetterRequestProcess Big #zClass
@@ -80,12 +80,23 @@ Rs0 f3 disableUIEvents false #txt
 Rs0 f3 inParameterDecl 'ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent methodEvent = event as ch.ivyteam.ivy.richdialog.exec.RdMethodCallEvent;
 <org.primefaces.event.TabChangeEvent event> param = methodEvent.getInputArguments();
 ' #txt
+Rs0 f3 inActionCode 'import org.primefaces.component.tabview.TabView;
+
+TabView tv = param.event.getComponent() as TabView; 
+
+out.oldTabIndex = out.activeTabIndex;
+out.activeTabIndex = tv.getActiveIndex();
+
+
+out.activeTabIndexTemporary = out.activeTabIndex;' #txt
 Rs0 f3 outParameterDecl '<> result;
 ' #txt
 Rs0 f3 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
     <language>
         <name>onTabChange(TabChangeEvent)</name>
+        <nameStyle>27,5,7
+</nameStyle>
     </language>
 </elementInfo>
 ' #txt
@@ -99,6 +110,7 @@ Rs0 f6 actionCode 'import ch.ivy.sample.bean.TransferData;
 import ch.ivy.sample.navigator.NavigatorManager;
 in.activeTabIndex = 0;
 in.activeTabIndexTemporary = 0;
+in.oldTabIndex = in.activeTabIndex;
 in.referenceNavigator = NavigatorManager.createInstance();
 in.transferData =  new TransferData();' #txt
 Rs0 f6 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
@@ -209,7 +221,8 @@ Rs0 f24 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestD
 Rs0 f24 actionTable 'out=in;
 ' #txt
 Rs0 f24 actionCode 'in.activeTabIndex = in.transferData.getNewTab().index;
-in.activeTabIndexTemporary = in.activeTabIndex;' #txt
+in.activeTabIndexTemporary = in.activeTabIndex;
+in.oldTabIndex = in.activeTabIndex;' #txt
 Rs0 f24 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f24 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <elementInfo>
@@ -356,8 +369,8 @@ import ch.ivy.sample.enums.EntryType;
 import ch.ivy.sample.bean.NavigatorParamVO.NavigatorParamBuilder;
 
 in.navigatorParam = NavigatorParamBuilder.createBuilder()
-.setOldTab(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
-.setCurrentTab(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
+.setCurrentTab(ch.ivy.sample.enums.MainPageTab.findBy(in.oldTabIndex))
+.setNewTab(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
 																				.setOnLoadMainStep(false)
 																				.setCheckSpecialCondition(false)
 																				.setOnLoadSubStep(false)
@@ -381,8 +394,18 @@ Rs0 f9 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestDa
 ' #txt
 Rs0 f9 actionTable 'out=in;
 ' #txt
+Rs0 f9 actionCode 'in.transferData = in.referenceNavigator.switchTab(in.navigatorParam);' #txt
 Rs0 f9 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
-Rs0 f9 544 330 112 44 0 -8 #rect
+Rs0 f9 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>doSwitch</name>
+        <nameStyle>8,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Rs0 f9 544 330 112 44 -25 -8 #rect
 Rs0 f9 @|StepIcon #fIcon
 Rs0 f35 expr out #txt
 Rs0 f35 600 214 600 330 #arcP

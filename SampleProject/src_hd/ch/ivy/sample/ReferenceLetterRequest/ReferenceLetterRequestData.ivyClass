@@ -12,3 +12,5 @@ transferData ch.ivy.sample.bean.TransferData #field
 transferData PERSISTENT #fieldModifier
 navigatorParam ch.ivy.sample.bean.NavigatorParamVO #field
 navigatorParam PERSISTENT #fieldModifier
+oldTabIndex java.lang.Integer #field
+oldTabIndex PERSISTENT #fieldModifier

@@ -21,58 +21,59 @@ public class NavigatorManager {
 	}
 	
 	public TransferData next(NavigatorParamVO param) throws BusinessException{
-		TransferData response = new TransferData();
-		navigator.performValidate(param, response); 
-		navigator.performNext(param, response);
-		if(isNewTabIndexValid(response) && response.getIsDataSaved()){
+		TransferData transferData = new TransferData();
+		navigator.performValidate(param.getCurrentTab(), param, transferData); 
+		navigator.performNext(param.getCurrentTab(), param, transferData);
+		if(isNewTabIndexValid(transferData) && transferData.getIsDataSaved()){
 			param.setAction(Action.NEXT);
-			processNewStepData(param , response);
+			processNewStepData(param , transferData);
 		}
-		return response;
+		return transferData;
 		
 	}
 
 	
 	
 	public TransferData back(NavigatorParamVO param) throws BusinessException{
-		TransferData response = new TransferData();
+		TransferData transferData = new TransferData();
 
-		navigator.performValidate(param, response); 
-		navigator.performBack(param, response);
-		if(isNewTabIndexValid(response) && response.getIsDataSaved()){
+		navigator.performValidate(param.getCurrentTab() ,param, transferData); 
+		navigator.performBack(param.getCurrentTab() ,param, transferData);
+		if(isNewTabIndexValid(transferData) && transferData.getIsDataSaved()){
 			param.setAction(Action.BACK);
-			processNewStepData(param, response);
+			processNewStepData(param, transferData);
 		}
 		
-		return response;
+		return transferData;
 	}
 	
-	private void loadAndValidateNewStepIfNeeded(NavigatorParamVO param, TransferData response) throws BusinessException {
-		if(response.isCanChangeTab()){
-			navigator.performLoad(param, response);
+	private void loadAndValidateNewStepIfNeeded(NavigatorParamVO param, TransferData transferData) throws BusinessException {
+		if(transferData.isCanChangeTab()){
+			navigator.performLoad(param.getNewTab() ,param, transferData);
 			param.setForEntry(EntryType.NEW_ENTRY);
 			param.setOnLoadMainStep(true);
 			param.setCheckSpecialCondition(true);
 			param.setOnLoadSubStep(true);
-			navigator.performValidate(param, response);
+			navigator.performValidate(param.getNewTab() ,param, transferData);
 		} 
 	}
-	private void processNewStepData(NavigatorParamVO param, TransferData response) throws BusinessException {
-		checkMovingCondition(response);
-		loadAndValidateNewStepIfNeeded(param, response);
+	private void processNewStepData(NavigatorParamVO param, TransferData transferData) throws BusinessException {
+		checkMovingCondition(transferData);
+		loadAndValidateNewStepIfNeeded(param, transferData);
 	}
 	
 	public TransferData switchTab(NavigatorParamVO param) throws BusinessException{
-		TransferData response = new TransferData();
-		param.setForEntry(getEntryTypeByTabIndex(param.getOldTab(), param.getCurrentTab()));
-		navigator.performValidate(param, response); 
+		TransferData transferData = new TransferData();
+		param.setForEntry(getEntryTypeByTabIndex(param.getCurrentTab(), param.getCurrentTab()));
+		navigator.performValidate(param.getCurrentTab(), param, transferData); 
 		
-		navigator.performSaveSwitchTab(param, response);
-		if(response.getIsDataSaved()){
-			processNewStepDataWhenSwitchTab(param, response);
+		navigator.performSaveSwitchTab(param.getCurrentTab(), param, transferData);
+		if(transferData.getIsDataSaved()){
+			transferData.setNewTab(param.getNewTab());
+			processNewStepDataWhenSwitchTab(param, transferData);
 		}
 		
-		return response;
+		return transferData;
 	}
 	
 	
@@ -86,18 +87,17 @@ public class NavigatorManager {
 	}
 	
 	public void processNewStepDataWhenSwitchTab(NavigatorParamVO param,
-			TransferData response) throws BusinessException {
-		checkMovingCondition(response);
-		if(response.isCanChangeTab()){
+			TransferData transferData) throws BusinessException {
+		checkMovingCondition(transferData);
+		if(transferData.isCanChangeTab()){
 			param.setAction(Action.SWITCH);
 			param.setForEntry(EntryType.NEW_ENTRY);
 			param.setOnLoadMainStep(true);
 			param.setCheckSpecialCondition(true);
 			param.setOnLoadSubStep(true);
 			
-			navigator.performLoad(param, response);
-			navigator.performValidate(param, response);
-			response.setNewTab(param.getCurrentTab());
+			navigator.performLoad(param.getNewTab(), param, transferData);
+			navigator.performValidate(param.getNewTab(), param, transferData);
 			
 		}
 		
@@ -108,7 +108,7 @@ public class NavigatorManager {
 		if(transferData == null) {
 			transferData = new TransferData();
 		}
-		transferData = navigator.performValidate(param, transferData);
+		transferData = navigator.performValidate(param.getCurrentTab(), param, transferData);
 		return transferData;
 	}
 	
@@ -121,23 +121,23 @@ public class NavigatorManager {
 	public String getDescription(){
 		return this.navigator.getDescription();
 	}
-	private boolean isNewTabIndexValid(TransferData response) {
-		return response.getNewTab().getIndex() != MainPageTab.UNKNOWN.getIndex();
+	private boolean isNewTabIndexValid(TransferData transferData) {
+		return transferData.getNewTab().getIndex() != MainPageTab.UNKNOWN.getIndex();
 	}
 	
-	private TransferData checkMovingCondition(TransferData response) throws BusinessException {
-		if(response == null){
-			response = new TransferData();
+	private TransferData checkMovingCondition(TransferData transferData) throws BusinessException {
+		if(transferData == null){
+			transferData = new TransferData();
 		}
-		switch (response.getNewTab()) {
+		switch (transferData.getNewTab()) {
 			case EMPLOYEE_DETAIL:
 			case DOCUMENT_TYPE:
-				response.setCanChangeTab(true);
+				transferData.setCanChangeTab(true);
 				break;
 			default:
 				break;
 		}
 		
-		return response;
+		return transferData;
 	}
 }
