@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Sat Jul 11 17:37:19 ICT 2015]
+[>Created: Sun Jul 12 11:00:17 ICT 2015]
 14E47CF40CA27A1E 3.17 #module
 >Proto >Proto Collection #zClass
 Rs0 ReferenceLetterRequestProcess Big #zClass
@@ -32,25 +32,33 @@ Rs0 @PushWFArc f21 '' #zField
 Rs0 @GridStep f22 '' #zField
 Rs0 @GridStep f24 '' #zField
 Rs0 @PushWFArc f25 '' #zField
-Rs0 @PushWFArc f12 '' #zField
 Rs0 @GridStep f26 '' #zField
 Rs0 @PushWFArc f18 '' #zField
 Rs0 @GridStep f17 '' #zField
-Rs0 @PushWFArc f28 '' #zField
 Rs0 @PushWFArc f23 '' #zField
 Rs0 @GridStep f29 '' #zField
-Rs0 @PushWFArc f30 '' #zField
 Rs0 @PushWFArc f27 '' #zField
 Rs0 @GridStep f31 '' #zField
 Rs0 @PushWFArc f32 '' #zField
 Rs0 @GridStep f4 '' #zField
-Rs0 @PushWFArc f5 '' #zField
 Rs0 @GridStep f9 '' #zField
 Rs0 @PushWFArc f35 '' #zField
 Rs0 @PushWFArc f8 '' #zField
 Rs0 @ProgramInterface f15 '' #zField
 Rs0 @PushWFArc f33 '' #zField
 Rs0 @PushWFArc f34 '' #zField
+Rs0 @GridStep f36 '' #zField
+Rs0 @PushWFArc f37 '' #zField
+Rs0 @PushWFArc f12 '' #zField
+Rs0 @GridStep f38 '' #zField
+Rs0 @PushWFArc f39 '' #zField
+Rs0 @PushWFArc f5 '' #zField
+Rs0 @GridStep f40 '' #zField
+Rs0 @PushWFArc f41 '' #zField
+Rs0 @PushWFArc f28 '' #zField
+Rs0 @GridStep f42 '' #zField
+Rs0 @PushWFArc f43 '' #zField
+Rs0 @PushWFArc f30 '' #zField
 >Proto Rs0 Rs0 ReferenceLetterRequestProcess #zField
 Rs0 f0 guid 14E47CF40FE8C4EA #txt
 Rs0 f0 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
@@ -145,7 +153,7 @@ Rs0 f10 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 Rs0 f10 755 83 26 26 -32 12 #rect
 Rs0 f10 @|RichDialogProcessStartIcon #fIcon
 Rs0 f11 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
-Rs0 f11 755 659 26 26 0 12 #rect
+Rs0 f11 755 723 26 26 0 12 #rect
 Rs0 f11 @|RichDialogProcessEndIcon #fIcon
 Rs0 f13 guid 14E5220B34C6DF6E #txt
 Rs0 f13 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
@@ -214,7 +222,7 @@ Rs0 f22 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f22 712 330 112 44 -19 -8 #rect
+Rs0 f22 712 434 112 44 -19 -8 #rect
 Rs0 f22 @|StepIcon #fIcon
 Rs0 f24 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
 ' #txt
@@ -233,12 +241,10 @@ Rs0 f24 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f24 712 490 112 44 -37 -8 #rect
+Rs0 f24 712 546 112 44 -37 -8 #rect
 Rs0 f24 @|StepIcon #fIcon
 Rs0 f25 expr out #txt
-Rs0 f25 768 374 768 490 #arcP
-Rs0 f12 expr out #txt
-Rs0 f12 768 534 768 659 #arcP
+Rs0 f25 768 478 768 546 #arcP
 Rs0 f26 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
 ' #txt
 Rs0 f26 actionTable 'out=in;
@@ -254,11 +260,11 @@ Rs0 f26 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f26 872 330 112 44 -20 -8 #rect
+Rs0 f26 872 434 112 44 -20 -8 #rect
 Rs0 f26 @|StepIcon #fIcon
 Rs0 f18 expr out #txt
-Rs0 f18 928 374 824 512 #arcP
-Rs0 f18 1 928 512 #addKink
+Rs0 f18 928 478 824 568 #arcP
+Rs0 f18 1 928 568 #addKink
 Rs0 f18 1 0.07276975031671618 0 0 #arcLabel
 Rs0 f17 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
 ' #txt
@@ -286,12 +292,10 @@ Rs0 f17 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f17 712 170 112 44 -33 -8 #rect
+Rs0 f17 712 322 112 44 -33 -8 #rect
 Rs0 f17 @|StepIcon #fIcon
-Rs0 f28 expr out #txt
-Rs0 f28 768 109 768 170 #arcP
 Rs0 f23 expr out #txt
-Rs0 f23 768 214 768 330 #arcP
+Rs0 f23 768 366 768 434 #arcP
 Rs0 f29 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
 ' #txt
 Rs0 f29 actionTable 'out=in;
@@ -319,12 +323,10 @@ Rs0 f29 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f29 872 170 112 44 -36 -8 #rect
+Rs0 f29 872 322 112 44 -36 -8 #rect
 Rs0 f29 @|StepIcon #fIcon
-Rs0 f30 expr out #txt
-Rs0 f30 928 109 928 170 #arcP
 Rs0 f27 expr out #txt
-Rs0 f27 928 214 928 330 #arcP
+Rs0 f27 928 366 928 434 #arcP
 Rs0 f31 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
 ' #txt
 Rs0 f31 actionTable 'out=in;
@@ -386,10 +388,8 @@ Rs0 f4 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f4 544 170 112 44 -33 -8 #rect
+Rs0 f4 544 322 112 44 -33 -8 #rect
 Rs0 f4 @|StepIcon #fIcon
-Rs0 f5 expr out #txt
-Rs0 f5 600 117 600 170 #arcP
 Rs0 f9 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
 ' #txt
 Rs0 f9 actionTable 'out=in;
@@ -405,13 +405,13 @@ Rs0 f9 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
     </language>
 </elementInfo>
 ' #txt
-Rs0 f9 544 330 112 44 -25 -8 #rect
+Rs0 f9 544 434 112 44 -25 -8 #rect
 Rs0 f9 @|StepIcon #fIcon
 Rs0 f35 expr out #txt
-Rs0 f35 600 214 600 330 #arcP
+Rs0 f35 600 366 600 434 #arcP
 Rs0 f8 expr out #txt
-Rs0 f8 600 374 712 512 #arcP
-Rs0 f8 1 600 512 #addKink
+Rs0 f8 600 478 712 568 #arcP
+Rs0 f8 1 600 568 #addKink
 Rs0 f8 1 0.09276263195697321 0 0 #arcLabel
 Rs0 f15 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f15 outerBean "ch.ivy.sample.ReferenceLetterRequest.resources.ValidationProcess" #txt
@@ -434,6 +434,94 @@ Rs0 f33 expr out #txt
 Rs0 f33 1200 230 1200 330 #arcP
 Rs0 f34 expr out #txt
 Rs0 f34 1200 374 1200 467 #arcP
+Rs0 f36 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
+' #txt
+Rs0 f36 actionTable 'out=in;
+' #txt
+Rs0 f36 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
+in.referenceRequestBean = ReferenceLetterUtil.getReferenceLetterRequestBean();' #txt
+Rs0 f36 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
+Rs0 f36 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>get bean</name>
+        <nameStyle>8,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Rs0 f36 712 642 112 44 -24 -8 #rect
+Rs0 f36 @|StepIcon #fIcon
+Rs0 f37 expr out #txt
+Rs0 f37 768 590 768 642 #arcP
+Rs0 f12 expr out #txt
+Rs0 f12 768 686 768 723 #arcP
+Rs0 f38 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
+' #txt
+Rs0 f38 actionTable 'out=in;
+' #txt
+Rs0 f38 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
+in.referenceRequestBean = ReferenceLetterUtil.getReferenceLetterRequestBean();' #txt
+Rs0 f38 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
+Rs0 f38 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>get bean</name>
+        <nameStyle>8,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Rs0 f38 544 218 112 44 -24 -8 #rect
+Rs0 f38 @|StepIcon #fIcon
+Rs0 f39 expr out #txt
+Rs0 f39 600 117 600 218 #arcP
+Rs0 f5 expr out #txt
+Rs0 f5 600 262 600 322 #arcP
+Rs0 f40 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
+' #txt
+Rs0 f40 actionTable 'out=in;
+' #txt
+Rs0 f40 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
+in.referenceRequestBean = ReferenceLetterUtil.getReferenceLetterRequestBean();' #txt
+Rs0 f40 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
+Rs0 f40 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>get bean</name>
+        <nameStyle>8,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Rs0 f40 712 218 112 44 -24 -8 #rect
+Rs0 f40 @|StepIcon #fIcon
+Rs0 f41 expr out #txt
+Rs0 f41 768 109 768 218 #arcP
+Rs0 f28 expr out #txt
+Rs0 f28 768 262 768 322 #arcP
+Rs0 f42 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData out;
+' #txt
+Rs0 f42 actionTable 'out=in;
+' #txt
+Rs0 f42 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
+in.referenceRequestBean = ReferenceLetterUtil.getReferenceLetterRequestBean();' #txt
+Rs0 f42 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
+Rs0 f42 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<elementInfo>
+    <language>
+        <name>get bean</name>
+        <nameStyle>8,7
+</nameStyle>
+    </language>
+</elementInfo>
+' #txt
+Rs0 f42 872 218 112 44 -24 -8 #rect
+Rs0 f42 @|StepIcon #fIcon
+Rs0 f43 expr out #txt
+Rs0 f43 928 109 928 218 #arcP
+Rs0 f30 expr out #txt
+Rs0 f30 928 262 928 322 #arcP
 >Proto Rs0 .type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 >Proto Rs0 .processKind HTML_DIALOG #txt
 >Proto Rs0 .xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -463,22 +551,14 @@ Rs0 f19 mainOut f21 tail #connect
 Rs0 f21 head f20 mainIn #connect
 Rs0 f22 mainOut f25 tail #connect
 Rs0 f25 head f24 mainIn #connect
-Rs0 f24 mainOut f12 tail #connect
-Rs0 f12 head f11 mainIn #connect
 Rs0 f26 mainOut f18 tail #connect
 Rs0 f18 head f24 mainIn #connect
-Rs0 f10 mainOut f28 tail #connect
-Rs0 f28 head f17 mainIn #connect
 Rs0 f17 mainOut f23 tail #connect
 Rs0 f23 head f22 mainIn #connect
-Rs0 f16 mainOut f30 tail #connect
-Rs0 f30 head f29 mainIn #connect
 Rs0 f29 mainOut f27 tail #connect
 Rs0 f27 head f26 mainIn #connect
 Rs0 f13 mainOut f32 tail #connect
 Rs0 f32 head f31 mainIn #connect
-Rs0 f3 mainOut f5 tail #connect
-Rs0 f5 head f4 mainIn #connect
 Rs0 f4 mainOut f35 tail #connect
 Rs0 f35 head f9 mainIn #connect
 Rs0 f9 mainOut f8 tail #connect
@@ -487,3 +567,19 @@ Rs0 f31 mainOut f33 tail #connect
 Rs0 f33 head f15 mainIn #connect
 Rs0 f15 mainOut f34 tail #connect
 Rs0 f34 head f14 mainIn #connect
+Rs0 f24 mainOut f37 tail #connect
+Rs0 f37 head f36 mainIn #connect
+Rs0 f36 mainOut f12 tail #connect
+Rs0 f12 head f11 mainIn #connect
+Rs0 f3 mainOut f39 tail #connect
+Rs0 f39 head f38 mainIn #connect
+Rs0 f38 mainOut f5 tail #connect
+Rs0 f5 head f4 mainIn #connect
+Rs0 f10 mainOut f41 tail #connect
+Rs0 f41 head f40 mainIn #connect
+Rs0 f40 mainOut f28 tail #connect
+Rs0 f28 head f17 mainIn #connect
+Rs0 f16 mainOut f43 tail #connect
+Rs0 f43 head f42 mainIn #connect
+Rs0 f42 mainOut f30 tail #connect
+Rs0 f30 head f29 mainIn #connect

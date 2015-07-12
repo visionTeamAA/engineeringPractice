@@ -14,11 +14,13 @@ public class ReferenceLetterRequestBean implements Serializable {
 	public void init(){
 		this.employeeDetailStep = new RequestEmployeeDetailStep();
 		this.documentTypeStep = new RequestDocumentTypeStep();
+		this.documentCreation = new RequestDocumentCreationStep();
 	}
 	
 	private static final long serialVersionUID = -5730460710754409952L;
 	private RequestEmployeeDetailStep employeeDetailStep;
 	private RequestDocumentTypeStep documentTypeStep;
+	private RequestDocumentCreationStep documentCreation;
 	public RequestEmployeeDetailStep getEmployeeDetailStep() {
 		return employeeDetailStep;
 	}
@@ -34,4 +36,13 @@ public class ReferenceLetterRequestBean implements Serializable {
 	public void setDocumentTypeStep(RequestDocumentTypeStep documentTypeStep) {
 		this.documentTypeStep = documentTypeStep;
 	}
+
+	public RequestDocumentCreationStep getDocumentCreation() {
+		return documentCreation;
+	}
+
+	public void setDocumentCreation(RequestDocumentCreationStep documentCreation) {
+		this.documentCreation = documentCreation;
+	}
+	
 }

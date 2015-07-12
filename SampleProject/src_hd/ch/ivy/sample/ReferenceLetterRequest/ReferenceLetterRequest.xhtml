@@ -34,7 +34,7 @@
 							</p:ajax>
 							<p:tab id="xrflEmployeeDetailTab"
 								title="Employee"
-								titleStyleClass="xrfl-ui-steps">
+								titleStyleClass="xrfl-ui-steps #{xrflRequestBean.employeeDetailStep.stepStatus.cssClass}">
 								<p:outputPanel id="xrflRequestEmpDetail" layout="inline">
 									<p:outputPanel rendered="#{data.activeTabIndex == 0}">
 										<p:panelGrid columns="2" styleClass="panelGroup">
@@ -62,7 +62,7 @@
 							</p:tab>
 							<p:tab id="xrflDocumentTypeTab"
 								title="Document type"
-								titleStyleClass="xrfl-ui-steps">
+								titleStyleClass="xrfl-ui-steps #{xrflRequestBean.documentTypeStep.stepStatus.cssClass}">
 								<p:outputPanel id="xrflRequestDocumentType" layout="inline">
 									<p:outputPanel rendered="#{data.activeTabIndex == 1}">
 										<p:panelGrid columns="2" styleClass="panelGroup">
@@ -94,14 +94,47 @@
 									</p:outputPanel>
 								</p:outputPanel>
 							</p:tab>
+							<p:tab id="xrflDocumentCreationTab"
+								title="Document Creation"
+								titleStyleClass="xrfl-ui-steps #{xrflRequestBean.documentCreation.stepStatus.cssClass}">
+								<p:outputPanel id="xrflRequestDocumentCreation" layout="inline">
+									<p:outputPanel rendered="#{data.activeTabIndex == 2}">
+										<p:panelGrid columns="2" styleClass="panelGroup">
+											<p:row>
+												<p:column>
+													<p:outputLabel value="Firstname" style="margin-right:20px"></p:outputLabel>
+												</p:column>
+												<p:column>
+													<p:outputLabel value="#{xrflRequestBean.employeeDetailStep.lastName}"></p:outputLabel>
+												</p:column>
+											</p:row>
+											<p:row>
+												<p:column>
+													<p:outputLabel value="Lastname" style="margin-right:20px"></p:outputLabel>
+												</p:column>
+												<p:column>
+													<p:outputLabel value="#{xrflRequestBean.employeeDetailStep.lastName}"></p:outputLabel>
+												</p:column>
+											</p:row>
+											<p:row>
+												<p:column>
+													<p:outputLabel value="Language" style="margin-right:20px"></p:outputLabel>
+												</p:column>
+												<p:column>
+													<p:outputLabel value="#{xrflRequestBean.documentCreation.displayDocLanguages}"></p:outputLabel>
+												</p:column>
+											</p:row>
+										</p:panelGrid>
+									</p:outputPanel>
+								</p:outputPanel>
+							</p:tab>
 						</p:tabView>
 					</p:outputPanel>
 					<p:outputPanel id="xrflMainTabButtonPanel"
 						styleClass="xrflMainTabButtonPanel">
 						<p:commandButton id="xrflBackBtn"
 							actionListener="#{logic.onClickBack}"
-							update=":#{p:component('xrflMainTabButtonPanel')}
-									,:#{p:component('xrflRequestEmpDetail')},:#{p:component('xrflRequestDocumentType')}"
+							update="@form"
 							styleClass="xrfl-main-page-btn" icon="btn-back"
 							value="back"
 							rendered="#{data.activeTabIndex != 0}"
@@ -115,10 +148,8 @@
 						</p:commandButton>
 						<p:commandButton id="xrflNextBtn"
 							actionListener="#{logic.onClickNext}"
-							update=":#{p:component('xrflMainTabButtonPanel')}
-									,:#{p:component('xrflRequestEmpDetail')},:#{p:component('xrflRequestDocumentType')}"
-							styleClass="xrfl-main-page-btn" icon="btn-forward"
-							rendered="#{data.activeTabIndex != 1}"
+							update="@form"							styleClass="xrfl-main-page-btn" icon="btn-forward"
+							rendered="#{data.activeTabIndex != 2}"
 							value="next"
 							oncomplete="buildMainNavigator();onCompleteValidation(xhr, status, args);"></p:commandButton>
 					</p:outputPanel>

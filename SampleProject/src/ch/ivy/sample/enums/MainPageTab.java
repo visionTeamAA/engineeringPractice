@@ -7,10 +7,10 @@ public enum MainPageTab {
 	UNKNOWN("Unknown", -1, "Unknown", "Unknown"),
 	EMPLOYEE_DETAIL("xrflEmployeeDetailTab",0,"/ch/soreco/standard/xrfl/web/mainPage/employeeDetailTab/lblTitleTab","/ch/soreco/standard/xrfl/web/mainPage/generalDescription/lblEmployeeDetail"),
 	DOCUMENT_TYPE("xrflDocumentTypeTab",1,"/ch/soreco/standard/xrfl/web/mainPage/documentTypeTab/lblTitleTab","/ch/soreco/standard/xrfl/web/mainPage/generalDescription/lblDocumentType"),
-	TASK("xrflTaskTab",2,"/ch/soreco/standard/xrfl/web/mainPage/taskTab/lblTitleTab","/ch/soreco/standard/xrfl/web/mainPage/generalDescription/lblRequestTask"),
-	FREE_TEXT("xrflFreeTextTab",3,"/ch/soreco/standard/xrfl/web/mainPage/freeTextTab/lblTitleTab","/ch/soreco/standard/xrfl/web/mainPage/generalDescription/lblFreeText"),
-	COMPETENCE("xrflCompetenceTab",4,"/ch/soreco/standard/xrfl/web/mainPage/competenceTab/lblTitleTab","/ch/soreco/standard/xrfl/web/mainPage/generalDescription/lblCompetence"),
-	DOCUMENT_CREATION("xrflDocumentCreationTab",5,"/ch/soreco/standard/xrfl/web/mainPage/documentCreationTab/lblTitleTab","/ch/soreco/standard/xrfl/web/mainPage/generalDescription/lblDocumentCreation");
+	//TASK("xrflTaskTab",2,"/ch/soreco/standard/xrfl/web/mainPage/taskTab/lblTitleTab","/ch/soreco/standard/xrfl/web/mainPage/generalDescription/lblRequestTask"),
+	//FREE_TEXT("xrflFreeTextTab",3,"/ch/soreco/standard/xrfl/web/mainPage/freeTextTab/lblTitleTab","/ch/soreco/standard/xrfl/web/mainPage/generalDescription/lblFreeText"),
+	//COMPETENCE("xrflCompetenceTab",4,"/ch/soreco/standard/xrfl/web/mainPage/competenceTab/lblTitleTab","/ch/soreco/standard/xrfl/web/mainPage/generalDescription/lblCompetence"),
+	DOCUMENT_CREATION("xrflDocumentCreationTab",2,"/ch/soreco/standard/xrfl/web/mainPage/documentCreationTab/lblTitleTab","/ch/soreco/standard/xrfl/web/mainPage/generalDescription/lblDocumentCreation");
 	
 	
 	private String id;

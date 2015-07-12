@@ -155,11 +155,11 @@ public class TransferData {
 		case DOCUMENT_TYPE:
 			this.docTypeValidationResult.sendErrorWithJSONSupport(requestContext, isClearError);
 			break;
-		case TASK:
-			this.taskValidationResult.sendErrorWithJSONSupport(requestContext, isClearError);
-			break;
-		case COMPETENCE:
-			this.competenceValidationResult.sendErrorWithJSONSupport(requestContext, isClearError);
+//		case TASK:
+//			this.taskValidationResult.sendErrorWithJSONSupport(requestContext, isClearError);
+//			break;
+//		case COMPETENCE:
+//			this.competenceValidationResult.sendErrorWithJSONSupport(requestContext, isClearError);
 		default:
 			break;
 		}
