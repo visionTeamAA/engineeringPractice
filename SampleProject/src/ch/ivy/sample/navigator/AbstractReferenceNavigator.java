@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import ch.ivy.sample.bean.BusinessException;
 import ch.ivy.sample.bean.NavigatorParamVO;
-import ch.ivy.sample.bean.ReferenceLetterRequestBean;
 import ch.ivy.sample.bean.TransferData;
 import ch.ivy.sample.bean.ValidationMessages;
 import ch.ivy.sample.enums.MainPageTab;
@@ -208,5 +207,14 @@ public abstract class AbstractReferenceNavigator implements Serializable  {
 			transferData.setException(new BusinessException(ch.ivy.sample.enums.Error.UNKNOWN.getCode()));
 		}
 		transferData.setNeedRefresh(ReferenceLetterUtil.checkRefreshConditionByErrorCode(transferData.getException().getErrorCode()));
+	}
+	
+	protected void updateStatusStep3(NavigatorParamVO param){
+		if(param.getXrflBean().getEmployeeDetailStep().getStepStatus().equals(StepStatus.FINISHED) 
+				&& param.getXrflBean().getDocumentTypeStep().getStepStatus().equals(StepStatus.FINISHED)){
+			param.getXrflBean().getDocumentCreation().setStepStatus(StepStatus.FINISHED);
+		} else{
+			param.getXrflBean().getDocumentCreation().setStepStatus(StepStatus.WARNING);
+		}
 	}
 }

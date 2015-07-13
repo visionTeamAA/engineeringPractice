@@ -7,6 +7,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 
+import org.apache.commons.lang3.StringUtils;
 import org.primefaces.context.RequestContext;
 
 
@@ -27,6 +28,9 @@ public final class CommonUtils {
 	}
 
 	public static String getFullId(FacesContext context, String componentId) {
+		if(context == null) {
+			return StringUtils.EMPTY;
+		}
 		UIViewRoot root = context.getViewRoot();
 		UIComponent c = findComponent(root, componentId);
 		return c.getClientId(context);

@@ -49,18 +49,18 @@ public class EmployeeDetailNavigator extends AbstractReferenceNavigator {
 		
 		RequestEmployeeDetailStep employeeDetailStep = param.getXrflBean().getEmployeeDetailStep();
 		if(StringUtils.isEmpty(employeeDetailStep.getFirstName())) {
-			//transferData.getEmpDetailValidationResult().addMessage(CommonUtils.getFullId(param.getFacesContext(), ConstantVariable.FIRSTNAME_INPUT), message.getMessage(ConstantVariable.MSG_REQUIRE_MESSAGE));
+			transferData.getEmpDetailValidationResult().addMessage(CommonUtils.getFullId(param.getFacesContext(), ConstantVariable.FIRSTNAME_INPUT), message.getMessage(ConstantVariable.MSG_REQUIRE_MESSAGE));
 		}
 		
 		if(StringUtils.isEmpty(employeeDetailStep.getLastName())) {
-			//transferData.getEmpDetailValidationResult().addMessage(CommonUtils.getFullId(param.getFacesContext(), ConstantVariable.LASTNAME_INPUT), message.getMessage(ConstantVariable.MSG_REQUIRE_MESSAGE));
+			transferData.getEmpDetailValidationResult().addMessage(CommonUtils.getFullId(param.getFacesContext(), ConstantVariable.LASTNAME_INPUT), message.getMessage(ConstantVariable.MSG_REQUIRE_MESSAGE));
 		}
 		if(!transferData.getEmpDetailValidationResult().isValidForm()){
 			param.getXrflBean().getEmployeeDetailStep().setStepStatus(StepStatus.WARNING);
 		} else{
 			param.getXrflBean().getEmployeeDetailStep().setStepStatus(StepStatus.FINISHED);
 		}
-		
+		updateStatusStep3(param);
 	}
 
 	@Override

@@ -70,7 +70,7 @@ public class DocumentCreationNavigator extends AbstractReferenceNavigator {
 		} else{
 			param.getXrflBean().getDocumentCreation().setStepStatus(StepStatus.WARNING);
 		}
-		
+		updateStatusStep3(param);
 	}
 
 	@Override
