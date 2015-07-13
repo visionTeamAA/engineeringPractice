@@ -141,4 +141,5 @@ public class ConstantVariable {
 	
 	public static final String FIRSTNAME_INPUT = "firstname";
 	public static final String LASTNAME_INPUT = "lastname";
+	public static final String AVAILABLE_LANGUAGE_CMB = "xrflAvailableLanguageCbo";
 }

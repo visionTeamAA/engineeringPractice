@@ -6,14 +6,18 @@ import java.util.Locale;
 import org.apache.commons.lang.StringUtils;
 
 import ch.ivy.sample.bean.BusinessException;
+import ch.ivy.sample.bean.ConstantVariable;
 import ch.ivy.sample.bean.NavigatorParamVO;
 import ch.ivy.sample.bean.ReferenceLetterRequestBean;
+import ch.ivy.sample.bean.RequestDocumentTypeStep;
+import ch.ivy.sample.bean.RequestEmployeeDetailStep;
 import ch.ivy.sample.bean.TransferData;
 import ch.ivy.sample.bean.ValidationMessages;
 import ch.ivy.sample.enums.Action;
 import ch.ivy.sample.enums.MainPageTab;
 import ch.ivy.sample.enums.StepStatus;
 import ch.ivy.sample.service.AvailableLanguageService;
+import ch.ivy.sample.util.CommonUtils;
 import ch.ivyteam.ivy.environment.EnvironmentNotAvailableException;
 import ch.ivyteam.ivy.environment.Ivy;
 import ch.ivyteam.ivy.persistence.PersistencyException;
@@ -55,7 +59,10 @@ public class DocumentTypeNavigator extends AbstractReferenceNavigator {
 	protected void doValidate(NavigatorParamVO param, TransferData transferData)
 			throws BusinessException {
 		Ivy.log().info("doValidate:" + this.getClass().getName());
-		
+		RequestDocumentTypeStep documentTypeStep = param.getXrflBean().getDocumentTypeStep();
+		if(StringUtils.isEmpty(documentTypeStep.getRequestDocumentType().getDocLanguage())) {
+			transferData.getDocTypeValidationResult().addMessage(CommonUtils.getFullId(param.getFacesContext(), ConstantVariable.AVAILABLE_LANGUAGE_CMB), message.getMessage(ConstantVariable.MSG_REQUIRE_MESSAGE));
+		}
 	}
 
 	@Override
