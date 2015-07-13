@@ -55,6 +55,12 @@ public class EmployeeDetailNavigator extends AbstractReferenceNavigator {
 		if(StringUtils.isEmpty(employeeDetailStep.getLastName())) {
 			//transferData.getEmpDetailValidationResult().addMessage(CommonUtils.getFullId(param.getFacesContext(), ConstantVariable.LASTNAME_INPUT), message.getMessage(ConstantVariable.MSG_REQUIRE_MESSAGE));
 		}
+		if(!transferData.getEmpDetailValidationResult().isValidForm()){
+			param.getXrflBean().getEmployeeDetailStep().setStepStatus(StepStatus.WARNING);
+		} else{
+			param.getXrflBean().getEmployeeDetailStep().setStepStatus(StepStatus.FINISHED);
+		}
+		
 	}
 
 	@Override

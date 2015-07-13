@@ -1,5 +1,5 @@
 [Ivy]
-[>Created: Sun Jul 12 11:00:17 ICT 2015]
+[>Created: Mon Jul 13 18:22:38 ICT 2015]
 14E47CF40CA27A1E 3.17 #module
 >Proto >Proto Collection #zClass
 Rs0 ReferenceLetterRequestProcess Big #zClass
@@ -386,6 +386,7 @@ in.navigatorParam = NavigatorParamBuilder.createBuilder()
 																				.setOnLoadMainStep(false)
 																				.setCheckSpecialCondition(false)
 																				.setOnLoadSubStep(false)
+																				.setFacesContext(javax.faces.context.FacesContext.getCurrentInstance())
 																			.setXrflBean(ReferenceLetterUtil.getReferenceLetterRequestBean())
 																			.setFacesContext(FacesContext.getCurrentInstance())
 																			.setRequestContext(RequestContext.getCurrentInstance())

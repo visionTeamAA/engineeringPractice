@@ -63,6 +63,12 @@ public class DocumentTypeNavigator extends AbstractReferenceNavigator {
 		if(StringUtils.isEmpty(documentTypeStep.getRequestDocumentType().getDocLanguage())) {
 			transferData.getDocTypeValidationResult().addMessage(CommonUtils.getFullId(param.getFacesContext(), ConstantVariable.AVAILABLE_LANGUAGE_CMB), message.getMessage(ConstantVariable.MSG_REQUIRE_MESSAGE));
 		}
+		
+		if(!transferData.getDocTypeValidationResult().isValidForm()){
+			param.getXrflBean().getDocumentTypeStep().setStepStatus(StepStatus.WARNING);
+		} else{
+			param.getXrflBean().getDocumentTypeStep().setStepStatus(StepStatus.FINISHED);
+		}
 	}
 
 	@Override

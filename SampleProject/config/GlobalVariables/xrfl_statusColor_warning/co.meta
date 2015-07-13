@@ -1,2 +1,2 @@
-co: name={xrfl_statusColor_warning} description={} changed={2015-07-11 13:56:13 GMT} changedby={Win 8 64Bit VS7} visualorder={0} guid={14E7D66BDB6F983E} parentguid={} typeguid={1065A70222E84F59} id={} parentid={} typeid={}
-val: guid={14E7D66BED69AC12} datatype={} isdefault={true} langid={en} description={} validfrom={2015-07-11 13:56:02 GMT} validto={} changed={2015-07-11 13:56:13 GMT} changedby={Win 8 64Bit VS7} properties={} id={}
+co: name={xrfl_statusColor_warning} description={} changed={2015-07-13 13:19:45 CEST} changedby={dvtrung} visualorder={0} guid={14E7D66BDB6F983E} parentguid={} typeguid={1065A70222E84F59} id={} parentid={} typeid={}
+val: guid={14E7D66BED69AC12} datatype={} isdefault={true} langid={en} description={} validfrom={2015-07-11 15:56:02 CEST} validto={} changed={2015-07-13 13:19:45 CEST} changedby={dvtrung} properties={} id={}

@@ -64,6 +64,12 @@ public class DocumentCreationNavigator extends AbstractReferenceNavigator {
 	protected void doValidate(NavigatorParamVO param, TransferData transferData)
 			throws BusinessException {
 		Ivy.log().info("doValidate:" + this.getClass().getName());
+		if(param.getXrflBean().getEmployeeDetailStep().getStepStatus().equals(StepStatus.FINISHED) 
+				&& param.getXrflBean().getDocumentTypeStep().getStepStatus().equals(StepStatus.FINISHED)){
+			param.getXrflBean().getDocumentCreation().setStepStatus(StepStatus.FINISHED);
+		} else{
+			param.getXrflBean().getDocumentCreation().setStepStatus(StepStatus.WARNING);
+		}
 		
 	}
 

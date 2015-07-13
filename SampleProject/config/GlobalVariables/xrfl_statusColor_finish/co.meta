@@ -1,2 +1,2 @@
-co: name={xrfl_statusColor_finish} description={} changed={2015-07-11 13:56:35 GMT} changedby={Win 8 64Bit VS7} visualorder={0} guid={14E7D670EC68E969} parentguid={} typeguid={1065A70222E84F59} id={} parentid={} typeid={}
-val: guid={14E7D670FA85C9ED} datatype={} isdefault={true} langid={en} description={} validfrom={2015-07-11 13:56:23 GMT} validto={} changed={2015-07-11 13:56:35 GMT} changedby={Win 8 64Bit VS7} properties={} id={}
+co: name={xrfl_statusColor_finish} description={} changed={2015-07-13 13:20:06 CEST} changedby={dvtrung} visualorder={0} guid={14E7D670EC68E969} parentguid={} typeguid={1065A70222E84F59} id={} parentid={} typeid={}
+val: guid={14E7D670FA85C9ED} datatype={} isdefault={true} langid={en} description={} validfrom={2015-07-11 15:56:23 CEST} validto={} changed={2015-07-13 13:20:06 CEST} changedby={dvtrung} properties={} id={}
