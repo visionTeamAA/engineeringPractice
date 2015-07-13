@@ -61,6 +61,8 @@ public class EmployeeDetailNavigator extends AbstractReferenceNavigator {
 			param.getXrflBean().getEmployeeDetailStep().setStepStatus(StepStatus.FINISHED);
 		}
 		updateStatusStep3(param);
+		
+		transferData.sendValidationResults(param.getRequestContext(), MainPageTab.findBy(MainPageTab.EMPLOYEE_DETAIL.getIndex()), false);
 	}
 
 	@Override

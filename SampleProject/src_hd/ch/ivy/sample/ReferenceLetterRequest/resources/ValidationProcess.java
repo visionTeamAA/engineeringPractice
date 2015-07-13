@@ -22,7 +22,7 @@ public class ValidationProcess extends XrflUserProcessExtension {
 		Ivy.log().info("Family name: " + data.getNavigatorParam().getXrflBean().getEmployeeDetailStep().getLastName());
 		
 		data.getReferenceNavigator().validate(data.getNavigatorParam(), data.getTransferData());
-		data.getTransferData().sendValidationResults(data.getNavigatorParam().getRequestContext(), MainPageTab.findBy(data.getActiveTabIndex()), true);
+		//data.getTransferData().sendValidationResults(data.getNavigatorParam().getRequestContext(), MainPageTab.findBy(data.getActiveTabIndex()), true);
 		data.getTransferData().setNeedToValidate(true);
 	}
 

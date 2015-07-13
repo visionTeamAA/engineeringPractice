@@ -70,6 +70,7 @@ public class DocumentTypeNavigator extends AbstractReferenceNavigator {
 			param.getXrflBean().getDocumentTypeStep().setStepStatus(StepStatus.FINISHED);
 		}
 		updateStatusStep3(param);
+		transferData.sendValidationResults(param.getRequestContext(), MainPageTab.findBy(MainPageTab.DOCUMENT_TYPE.getIndex()), false);
 	}
 
 	@Override

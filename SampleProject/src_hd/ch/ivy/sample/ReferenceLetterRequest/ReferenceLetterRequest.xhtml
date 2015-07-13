@@ -141,7 +141,7 @@
 							oncomplete="buildMainNavigator(); onCompleteValidation(xhr, status, args);"></p:commandButton>
 						<p:commandButton id="xrflValidateBtn"
 							styleClass="xrfl-main-page-btn" icon="btn-validate"
-							value="validate"
+							value="validate" rendered="#{data.activeTabIndex != 2}"
 							actionListener="#{logic.onValidate}"
 							update="@form"
 							oncomplete="buildMainNavigator(); onCompleteValidation(xhr, status, args);">
