@@ -270,7 +270,9 @@ Rs0 f17 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestD
 ' #txt
 Rs0 f17 actionTable 'out=in;
 ' #txt
-Rs0 f17 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
+Rs0 f17 actionCode 'import org.primefaces.context.RequestContext;
+import javax.faces.context.FacesContext;
+import ch.ivy.sample.util.ReferenceLetterUtil;
 import ch.ivy.sample.enums.EntryType;
 import ch.ivy.sample.bean.NavigatorParamVO.NavigatorParamBuilder;
 
@@ -281,6 +283,8 @@ in.navigatorParam = NavigatorParamBuilder.createBuilder()
 																			.setOnLoadSubStep(false)
 																			.setCurrentTab(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
 																			.setXrflBean(ReferenceLetterUtil.getReferenceLetterRequestBean())
+																			.setFacesContext(FacesContext.getCurrentInstance())
+																			.setRequestContext(RequestContext.getCurrentInstance())
 																			.createParam();' #txt
 Rs0 f17 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f17 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -300,7 +304,9 @@ Rs0 f29 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestD
 ' #txt
 Rs0 f29 actionTable 'out=in;
 ' #txt
-Rs0 f29 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
+Rs0 f29 actionCode 'import org.primefaces.context.RequestContext;
+import javax.faces.context.FacesContext;
+import ch.ivy.sample.util.ReferenceLetterUtil;
 
 import ch.ivy.sample.enums.EntryType;
 import ch.ivy.sample.bean.NavigatorParamVO.NavigatorParamBuilder;
@@ -312,6 +318,8 @@ in.navigatorParam = NavigatorParamBuilder.createBuilder()
 																			.setOnLoadSubStep(false)
 																			.setCurrentTab(ch.ivy.sample.enums.MainPageTab.findBy(in.activeTabIndex))
 																			.setXrflBean(ReferenceLetterUtil.getReferenceLetterRequestBean())
+																			.setFacesContext(FacesContext.getCurrentInstance())
+																			.setRequestContext(RequestContext.getCurrentInstance())
 																			.createParam();' #txt
 Rs0 f29 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f29 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -366,7 +374,9 @@ Rs0 f4 actionDecl 'ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestDa
 ' #txt
 Rs0 f4 actionTable 'out=in;
 ' #txt
-Rs0 f4 actionCode 'import ch.ivy.sample.util.ReferenceLetterUtil;
+Rs0 f4 actionCode 'import org.primefaces.context.RequestContext;
+import javax.faces.context.FacesContext;
+import ch.ivy.sample.util.ReferenceLetterUtil;
 import ch.ivy.sample.enums.EntryType;
 import ch.ivy.sample.bean.NavigatorParamVO.NavigatorParamBuilder;
 
@@ -377,6 +387,8 @@ in.navigatorParam = NavigatorParamBuilder.createBuilder()
 																				.setCheckSpecialCondition(false)
 																				.setOnLoadSubStep(false)
 																			.setXrflBean(ReferenceLetterUtil.getReferenceLetterRequestBean())
+																			.setFacesContext(FacesContext.getCurrentInstance())
+																			.setRequestContext(RequestContext.getCurrentInstance())
 																			.createParam();' #txt
 Rs0 f4 type ch.ivy.sample.ReferenceLetterRequest.ReferenceLetterRequestData #txt
 Rs0 f4 @C|.xml '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
