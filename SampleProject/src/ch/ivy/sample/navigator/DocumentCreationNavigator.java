@@ -34,18 +34,21 @@ public class DocumentCreationNavigator extends AbstractReferenceNavigator {
 	protected void doLoad(NavigatorParamVO param)
 			throws BusinessException {
 		Ivy.log().info("DoLoad:" + this.getClass().getName());
-		final String doclang = param.getXrflBean().getDocumentTypeStep().getRequestDocumentType().getDocLanguage(); 
-		Collection<AvailableLanguageDTO> selectedLang= CollectionUtils.select(param.getXrflBean().getDocumentTypeStep().getAvailableLanguages(), new Predicate() {
-			@Override
-			public boolean evaluate(Object arg0) {
-				AvailableLanguageDTO obj = (AvailableLanguageDTO) arg0;
-				return obj.getCode().equalsIgnoreCase(doclang);
+		if(CollectionUtils.isNotEmpty(param.getXrflBean().getDocumentTypeStep().getAvailableLanguages())){
+			final String doclang = param.getXrflBean().getDocumentTypeStep().getRequestDocumentType().getDocLanguage(); 
+			Collection<AvailableLanguageDTO> selectedLang= CollectionUtils.select(param.getXrflBean().getDocumentTypeStep().getAvailableLanguages(), new Predicate() {
+				@Override
+				public boolean evaluate(Object arg0) {
+					AvailableLanguageDTO obj = (AvailableLanguageDTO) arg0;
+					return obj.getCode().equalsIgnoreCase(doclang);
+				}
+			});
+			List<AvailableLanguageDTO> result = new ArrayList<AvailableLanguageDTO>(selectedLang);
+			if(CollectionUtils.isNotEmpty(result)){
+				param.getXrflBean().getDocumentCreation().setDisplayDocLanguages(result.get(0).getDescription());
 			}
-		});
-		List<AvailableLanguageDTO> result = new ArrayList<AvailableLanguageDTO>(selectedLang);
-		if(CollectionUtils.isNotEmpty(result)){
-			param.getXrflBean().getDocumentCreation().setDisplayDocLanguages(result.get(0).getDescription());
 		}
+		
 	}
 
 	@Override
