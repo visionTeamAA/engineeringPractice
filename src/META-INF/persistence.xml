@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+    <persistence-unit name="xpertLine">
+        <class>company.team.vision.databaseJava.entity.XpertLineFunction</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.connection.driver_class" value="net.sourceforge.jtds.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:jtds:sqlserver://192.168.73.24:1433/XlineDTA001_Test"/>
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.password" value="so9123*&amp;^"/>            
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="xrfl_integration_test">
+        <class>company.team.vision.databaseJava.entity.AdminSetting</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.connection.driver_class" value="net.sourceforge.jtds.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:jtds:sqlserver://192.168.73.24:1433/XRFL_INTEGRATION_TEST"/>
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.password" value="so9123*&amp;^"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="xrfl_unit_test">
+        <class>company.team.vision.databaseJava.entity.XpertLineFunction</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.connection.driver_class" value="net.sourceforge.jtds.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:jtds:sqlserver://192.168.73.24:1433/XRFL_TEST"/>
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.password" value="so9123*&amp;^"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+        </properties>
+    </persistence-unit>
+</persistence>

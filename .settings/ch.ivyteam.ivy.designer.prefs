@@ -1,0 +1,4 @@
+ch.ivyteam.ivy.designer.preferences.DataClassPreferencePage\:DEFAULT_DATA_CLASS=company.team.vision.databaseJava.Data
+ch.ivyteam.ivy.designer.preferences.DataClassPreferencePage\:DEFAULT_NAMESPACE=company.team.vision.databaseJava
+ch.ivyteam.ivy.project.preferences\:PROJECT_VERSION=50914
+eclipse.preferences.version=1
