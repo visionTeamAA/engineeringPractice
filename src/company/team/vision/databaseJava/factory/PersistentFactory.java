@@ -22,6 +22,11 @@ public abstract class PersistentFactory {
 				entityManager = createEntityManager(PersistentType.PERSISTENT_XPERTLINE_TEST
 						.getPersistentName());
 				break;
+			
+			case XLINEDTA001_48_17:
+				entityManager = createEntityManager(PersistentType.XLINEDTA001_48_17
+						.getPersistentName());
+				break;
 			}
 		return entityManager;
 	}

@@ -8,8 +8,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import company.team.vision.databaseJava.dao.AdminSettingDao;
+import company.team.vision.databaseJava.dao.XLINEDTA001_48_17Dao;
 import company.team.vision.databaseJava.dao.XpertLineFunctionDao;
 import company.team.vision.databaseJava.daoImpl.AdminSettingDaoJpaImpl;
+import company.team.vision.databaseJava.daoImpl.XLINEDTA001_48_17DaoImpl;
 import company.team.vision.databaseJava.daoImpl.XpertLineFunctionDaoImpl;
 import company.team.vision.databaseJava.entity.AdminSetting;
 import company.team.vision.databaseJava.entity.XpertLineFunction;
@@ -45,6 +47,13 @@ public class PersistentFactoryTest {
 		AdminSettingDao dao = new AdminSettingDaoJpaImpl();
 		List<AdminSetting> result = dao.getAllAdminSetting(PersistentFactory.getEntityManager(PersistentType.PERSISTENT_INTEGRATION_TEST));
 		Assert.assertTrue(result.size() > 0);
+	}
+	
+	@Test
+	public void shoudldGetDataFrom_XLINEDTA001_48_17DaoImpl_Database() {
+		XLINEDTA001_48_17Dao dao  = new XLINEDTA001_48_17DaoImpl();
+		List<Object[]> list = dao.getDataFromView(PersistentFactory.getEntityManager(PersistentType.XLINEDTA001_48_17));
+		Assert.assertTrue(list.size()> 0);
 	}
 	
 }

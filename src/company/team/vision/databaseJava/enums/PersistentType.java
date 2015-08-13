@@ -3,7 +3,8 @@ package company.team.vision.databaseJava.enums;
 public enum PersistentType {
 	PERSISTENT_UNIT_TEST("xrfl_unit_test"), 
 	PERSISTENT_INTEGRATION_TEST("xrfl_integration_test"),
-	PERSISTENT_XPERTLINE_TEST("xpertLine");
+	PERSISTENT_XPERTLINE_TEST("xpertLine"),
+	XLINEDTA001_48_17("XLINEDTA001_48_17");
 	
 	private String persistentName;
 
